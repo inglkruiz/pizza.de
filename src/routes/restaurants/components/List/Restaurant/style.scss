@@ -1,0 +1,74 @@
+@import '../../../../../sass/bootstrap-core';
+
+$restaurant: 'restaurant';
+
+.#{$restaurant} {
+  display: flex;
+  margin-bottom: 1rem;
+  border: {
+    width: 1px;
+    style: solid;
+    color: $gray-400;
+    radius: 0.25rem;
+  }
+  color: $body-color;
+  padding: 0.5rem;
+
+  @include box-shadow(0px 2px 2px $gray-400);
+  
+  @include hover-focus {
+    text-decoration: none;
+    color: $body-color;
+    border-color: $primary;
+    @include box-shadow(0px 4px 10px 4px $gray-400);
+
+    .#{$restaurant}__cta {
+      color: color-yiq(darken($primary, 7.5%));
+      @include gradient-bg(darken($primary, 7.5%));
+      border-color: darken($primary, 10%);
+    }
+  }
+
+  &__logo {
+    height: 130px;
+    border: {
+      width: 1px;
+      style: solid;
+      color: $gray-400;
+      radius: 0.25rem;
+    }
+  }
+
+  &__info {
+    padding: 0.5rem 0.5rem 0 1rem;
+  }
+
+  &__name {
+    display: inline-block;
+    margin-right: 1rem;
+  }
+
+  &__average-rating {
+    display: inline-block;
+    font-size: $h5-font-size;
+    font-weight: $font-weight-semibold;
+    color: $gray-600;
+    line-height: 1.2;
+  }
+
+  &__category {
+    display: inline-block;
+    padding: 0.5rem 0.8rem;
+    background-color: $gray-300;
+    border-radius: 0.25rem;
+
+    &:not(:last-child) {
+      margin-right: 0.5rem;
+    }
+  }
+
+  &__cta {
+    margin-left: auto;
+    align-self: center;
+  }
+}

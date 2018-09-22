@@ -1,0 +1,243 @@
+@import 'sass/bootstrap-core';
+// @import '~bootstrap/scss/root';
+@import '~bootstrap/scss/reboot';
+
+// @import '~bootstrap/scss/type';
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  margin-bottom: $headings-margin-bottom;
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  line-height: $headings-line-height;
+  color: $headings-color;
+}
+
+h1, .h1 { font-size: $h1-font-size; }
+h2, .h2 { font-size: $h2-font-size; }
+h3, .h3 { font-size: $h3-font-size; }
+h4, .h4 { font-size: $h4-font-size; }
+h5, .h5 { font-size: $h5-font-size; }
+h6, .h6 { font-size: $h6-font-size; }
+
+// @import '~bootstrap/scss/images';
+// @import '~bootstrap/scss/code';
+// @import '~bootstrap/scss/grid';
+// @import '~bootstrap/scss/tables';
+// @import '~bootstrap/scss/forms';
+
+//
+// Textual form controls
+//
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: $input-height;
+  padding: $input-padding-y $input-padding-x;
+  font-size: $font-size-base;
+  line-height: $input-line-height;
+  color: $input-color;
+  background-color: $input-bg;
+  background-clip: padding-box;
+  border: $input-border-width solid $input-border-color;
+
+  // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
+  @if $enable-rounded {
+    // Manually use the if/else instead of the mixin to account for iOS override
+    border-radius: $input-border-radius;
+  } @else {
+    // Otherwise undo the iOS default
+    border-radius: 0;
+  }
+
+  @include box-shadow($input-box-shadow);
+  @include transition($input-transition);
+
+  // Unstyle the caret on `<select>`s in IE10+.
+  &::-ms-expand {
+    background-color: transparent;
+    border: 0;
+  }
+
+  // Customize the `:focus` state to imitate native WebKit styles.
+  @include form-control-focus();
+
+  // Placeholder
+  &::placeholder {
+    color: $input-placeholder-color;
+    // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
+    opacity: 1;
+  }
+
+  // Disabled and read-only inputs
+  //
+  // HTML5 says that controls under a fieldset > legend:first-child won't be
+  // disabled if the fieldset is disabled. Due to implementation difficulty, we
+  // don't honor that edge case; we style them as disabled anyway.
+  &:disabled,
+  &[readonly] {
+    background-color: $input-disabled-bg;
+    // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
+    opacity: 1;
+  }
+}
+
+select.form-control {
+  &:focus::-ms-value {
+    // Suppress the nested default white text on blue background highlight given to
+    // the selected option text when the (still closed) <select> receives focus
+    // in IE and (under certain conditions) Edge, as it looks bad and cannot be made to
+    // match the appearance of the native widget.
+    // See https://github.com/twbs/bootstrap/issues/19398.
+    color: $input-color;
+    background-color: $input-bg;
+  }
+}
+
+// stylelint-disable no-duplicate-selectors
+select.form-control {
+  &[size],
+  &[multiple] {
+    height: auto;
+  }
+}
+
+// Form groups
+//
+// Designed to help with the organization and spacing of vertical forms. For
+// horizontal forms, use the predefined grid classes.
+
+.form-group {
+  margin-bottom: $form-group-margin-bottom;
+}
+
+// @import '~bootstrap/scss/buttons';
+
+.btn {
+  display: inline-block;
+  font-weight: $btn-font-weight;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: $btn-border-width solid transparent;
+  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-line-height, $btn-border-radius);
+  @include transition($btn-transition);
+
+  // Share hover and focus styles
+  @include hover-focus {
+    text-decoration: none;
+  }
+
+  &:focus,
+  &.focus {
+    outline: 0;
+    box-shadow: $btn-focus-box-shadow;
+  }
+
+  // Disabled comes first so active can properly restyle
+  &.disabled,
+  &:disabled {
+    opacity: $btn-disabled-opacity;
+    @include box-shadow(none);
+  }
+
+  // Opinionated: add "hand" cursor to non-disabled .btn elements
+  &:not(:disabled):not(.disabled) {
+    cursor: pointer;
+  }
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active {
+    @include box-shadow($btn-active-box-shadow);
+
+    &:focus {
+      @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
+    }
+  }
+}
+
+//
+// Alternate buttons
+//
+
+@each $color, $value in $theme-colors {
+  .btn-#{$color} {
+    @include button-variant($value, $value);
+  }
+}
+
+//
+// Button Sizes
+//
+
+.btn-lg {
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
+}
+
+// @import '~bootstrap/scss/transitions';
+// @import '~bootstrap/scss/dropdown';
+// @import '~bootstrap/scss/button-group';
+// @import '~bootstrap/scss/input-group';
+// @import '~bootstrap/scss/custom-forms';
+// @import '~bootstrap/scss/nav';
+// @import '~bootstrap/scss/navbar';
+// @import '~bootstrap/scss/card';
+// @import '~bootstrap/scss/breadcrumb';
+// @import '~bootstrap/scss/pagination';
+// @import '~bootstrap/scss/badge';
+// @import '~bootstrap/scss/jumbotron';
+// @import '~bootstrap/scss/alert';
+// @import '~bootstrap/scss/progress';
+// @import '~bootstrap/scss/media';
+// @import '~bootstrap/scss/list-group';
+// @import '~bootstrap/scss/close';
+// @import '~bootstrap/scss/modal';
+// @import '~bootstrap/scss/tooltip';
+// @import '~bootstrap/scss/popover';
+// @import '~bootstrap/scss/carousel';
+
+// @import '~bootstrap/scss/utilities';
+
+// @import '~bootstrap/scss/utilities/align';
+// @import '~bootstrap/scss/utilities/background';
+// @import '~bootstrap/scss/utilities/borders';
+// @import '~bootstrap/scss/utilities/clearfix';
+// @import '~bootstrap/scss/utilities/display';
+// @import '~bootstrap/scss/utilities/embed';
+// @import '~bootstrap/scss/utilities/flex';
+// @import '~bootstrap/scss/utilities/float';
+// @import '~bootstrap/scss/utilities/position';
+// @import '~bootstrap/scss/utilities/screenreaders';
+// @import '~bootstrap/scss/utilities/shadows';
+// @import '~bootstrap/scss/utilities/sizing';
+// @import '~bootstrap/scss/utilities/spacing';
+// @import '~bootstrap/scss/utilities/text';
+// @import '~bootstrap/scss/utilities/visibility';
+
+// @import '~bootstrap/scss/print';
+
+html {
+  font-size: 14px;
+}
+
+.container {
+  @include make-container();
+  padding-right: ($grid-gutter-width / 4);
+  padding-left: ($grid-gutter-width / 4);
+  @include make-container-max-widths();
+}
+
+
+
+@include media-breakpoint-up(md) {
+  html {
+    font-size: 16px;
+  }
+
+  .container {
+    padding-right: ($grid-gutter-width / 2);
+    padding-left: ($grid-gutter-width / 2);
+  }
+}
