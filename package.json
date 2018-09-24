@@ -1,5 +1,5 @@
 {
-  "name": "react-pipeline",
+  "name": "delivery-hero-test",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,8 @@
     "analyze": "cross-env ANALYZE=true npm run build:prod",
     "build:prod": "cross-env NODE_ENV=production webpack -p",
     "start": "cross-env NODE_ENV=development webpack-dev-server",
-    "build": "cross-env NODE_ENV=development webpack"
+    "build": "cross-env NODE_ENV=development webpack",
+    "deploy": "npm run build:prod && firebase deploy"
   },
   "engines": {
     "node": ">=8.11.4 <9"
@@ -41,6 +42,7 @@
     "copy-webpack-plugin": "^4.5.2",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
+    "firebase-tools": "^4.2.1",
     "html-loader": "^0.5.5",
     "html-webpack-harddisk-plugin": "^0.2.0",
     "html-webpack-inline-source-plugin": "0.0.10",

@@ -159,7 +159,7 @@ const config = {
     openPage: 'restaurants/',
     historyApiFallback: {
       rewrites: [
-        { from: /^\/.+\/?/i, to: 'index.html' }
+        { from: /.*\/?/i, to: 'index.html' }
       ]
     }
   },
