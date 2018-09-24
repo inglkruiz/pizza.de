@@ -9,6 +9,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const InlineSourcePlugin = require('html-webpack-inline-source-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CompressionPlugin = require('compression-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -139,6 +140,9 @@ const config = {
         new MiniCssExtractPlugin({
           // Options similar to the same options in webpackOptions.output
           filename: `[name]${isProd ? '.[chunkhash]' : ''}.css`
+        }),
+        new CompressionPlugin({
+          test: /\.(jsx?|css|html)$/
         })
       ]
       : [
