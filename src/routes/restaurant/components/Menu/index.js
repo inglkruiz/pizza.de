@@ -1,30 +1,10 @@
-import React, { Component, Fragment } from 'react'
+import React from 'react'
+import Loadable from 'react-loadable'
+import Loading from '../../../../components/Loading'
 
-import SectionItem from './SectionItem'
-
-class Menu extends Component {
-  render () {
-    return (
-      <div className='menu'>
-        {
-          this.props.menu.map(section => (
-            <Fragment key={section.id}>
-              <h4 className='menu-section'>
-                {section.name}
-              </h4>
-              <ul className='section-list'>
-                {
-                  section.items.map(item => (
-                    <SectionItem key={item.id} item={item} />
-                  ))
-                }
-              </ul>
-            </Fragment>
-          ))
-        }
-      </div>
-    )
-  }
-}
+const Menu = Loadable({
+  loader: () => import('./Body'),
+  loading: () => (<Loading />)
+})
 
 export default Menu

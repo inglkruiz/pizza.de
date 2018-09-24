@@ -1,7 +1,14 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
+import Loadable from 'react-loadable'
+import Loading from '../Loading'
 
 import './style'
+
+const Restaurant = Loadable({
+  loader: () => import('./Body'),
+  loading: () => (<Loading />)
+})
 
 export function RestaurantAsLink (props) {
   if (!props.shown) return null
@@ -26,41 +33,5 @@ export function RestaurantAsBlock (props) {
         </button>
       </Restaurant>
     </div>
-  )
-}
-
-function Restaurant ({
-  id,
-  logo,
-  name,
-  averageRating,
-  location,
-  categories,
-  shown,
-  children
-}) {
-  return (
-    <Fragment>
-      <img className='restaurant__logo' src={logo} />
-      <div className='restaurant__info'>
-        <h4 className='restaurant__name'>{name}</h4>
-        <span className='restaurant__average-rating'>
-          Avg. Rating ({averageRating}/5)
-        </span>
-        <address className='restaurant__location'>
-          Location: {location}
-        </address>
-        <div>
-          {
-            categories.map((cat, i) => (
-              <span key={`${id}_cat_${i}`} className='restaurant__category'>
-                {cat}
-              </span>
-            ))
-          }
-        </div>
-      </div>
-      {children}
-    </Fragment>
   )
 }

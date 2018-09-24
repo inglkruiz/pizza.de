@@ -25,6 +25,7 @@ module.exports = {
   ],
   'plugins': [
     '@babel/plugin-transform-react-constant-elements',
-    '@babel/plugin-proposal-class-properties'
+    '@babel/plugin-proposal-class-properties',
+    '@babel/plugin-syntax-dynamic-import'
   ]
 }
