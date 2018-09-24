@@ -1,0 +1,58 @@
+@import '../../sass/bootstrap-core';
+
+.restaurant-details {
+  padding: {
+    top: 2rem;
+  }
+
+  &__back-btn {
+    margin-bottom: 1rem;
+  }
+
+  .menu {
+    padding: 0.5rem;
+    border: {
+      width: 1px;
+      style: solid;
+      color: $gray-400;
+      radius: 0.25rem;
+    }
+    .section {
+      &-list {
+        padding-left: 1rem;
+      }
+
+      &-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5rem;
+        padding: 0.25rem 0.25rem 0.25rem 1rem;
+
+        &:nth-child(2n-1) {
+          background-color: $gray-100;
+        }
+
+        &__name {
+          font-weight: $font-weight-semibold;
+        }
+        
+        &__price {
+          min-width: 5rem;
+          text-align: right;
+          display: inline-block;
+          padding: 0.5rem 0.8rem;
+          background-color: $gray-300;
+          border-radius: 0.25rem;
+          margin-left: auto;
+          margin-right: 0.5rem;
+          position: relative;
+
+          .icon-euro {
+            position: absolute;
+            left: 0.25rem;
+          }
+        }
+      }
+    }
+  }
+}

@@ -3,5 +3,5 @@ GET https://mockapi.pizza.de/v1/auth
 GET https://mockapi.pizza.de/v1/restaurants
 token: 4eHc6LnYxdjI1dfZpamiopmnpamrqQ==
 
-GET https://mockapi.pizza.de/v1/restaurants/{id}
-token: 4eHc6LnYxdjI1dfZpamiopmmpLClpQ==
+GET https://mockapi.pizza.de/v1/restaurants/45069
+token: 4eHc6LnYxdjI1dfZpamiopyjoK2krQ==

@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
+import { withRouter } from 'react-router-dom'
 
 export const CATEGORY_KEY = 'CATEGORY'
 
 class CategoryFilter extends Component {
   handleChange = (evt) => {
-    this.props.filter(CATEGORY_KEY, evt.target.value)
+    this.props.history.push(
+      `${this.props.location.pathname}?${this.props.filter(CATEGORY_KEY, evt.target.value)}`
+    )
   }
 
   render () {
@@ -24,7 +27,7 @@ class CategoryFilter extends Component {
   }
 }
 
-export default inject(allStores => ({
+export default withRouter(inject(allStores => ({
   filters: allStores.main.filters,
   filter: allStores.main.filter
-}))(observer(CategoryFilter))
+}))(observer(CategoryFilter)))

@@ -8,10 +8,11 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const InlineSourcePlugin = require('html-webpack-inline-source-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'
 
-const dist = path.join(__dirname, 'dist')
+const dist = path.join(__dirname, 'public')
 const src = path.join(__dirname, 'src')
 
 const config = {
@@ -101,7 +102,7 @@ const config = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin([dist]),
     new webpack.optimize.OccurrenceOrderPlugin(true),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new HtmlWebpackPlugin({
@@ -122,7 +123,10 @@ const config = {
         removeStyleLinkTypeAttributes: true,
         removeOptionalTags: true
       }
-    })/* ,
+    }),
+    new CopyWebpackPlugin([
+      { from: path.join(src, 'static'), to: dist }
+    ])/* ,
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery'

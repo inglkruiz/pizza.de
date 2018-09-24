@@ -7,7 +7,13 @@ let promise
  */
 function executeCall () {
   promise = fetch('restaurants')
-    .then(response => response.json())
+    .then(response => {
+      if (response instanceof Promise) {
+        response.then(() => executeCall())
+        throw new Error('Unathorized by Token')
+      }
+      return response
+    })
     .then(({data}) => data)
     .then(mapData)
 
@@ -79,27 +85,19 @@ function mapData (data = []) {
   }
 }
 
-// PUBLIC
-
-/**
- * Resets service promise and returns it.
- * @returns {Promise}
- */
-export function resetFetch () {
-  return executeCall()
-}
-
 /**
  * Returns service promise if already exists. If promise is `undefined` executeCall to save promise and returns it.
  * @returns {Promise}
  */
-export function fetchRestaurants () {
+function fetchRestaurants () {
   if (promise) {
     return promise
   }
 
   return executeCall()
 }
+
+// PUBLIC
 
 /**
  * Returns mapped data attribute from promise response
