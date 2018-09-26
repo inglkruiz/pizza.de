@@ -1,9 +1,7 @@
 import { extendObservable, action, configure } from 'mobx'
 import { getRestaurants, getFilters } from './lib/services/getRestaurantsList'
 import { getRestaurant } from './lib/services/getRestaurant'
-import getFiltersFromURL from './lib/getFiltersFromURL'
-import { CATEGORY_KEY } from './routes/restaurants/components/Filters/Category'
-import { RATING_KEY } from './routes/restaurants/components/Sort'
+import { asString as getFiltersFromURLAsString, asObject as getFiltersFromURLAsObject } from './lib/getFiltersFromURL'
 
 configure({
   enforceActions: 'observed'
@@ -17,10 +15,7 @@ class Store {
       filters: {
         categories: []
       },
-      filteringBy: {
-        category: '',
-        sort: ''
-      }
+      filteringBy: getFiltersFromURLAsObject()
     })
   }
 
@@ -42,45 +37,21 @@ class Store {
     this.filters = filters
   }
 
-  filter = action('filter', (by, value) => {
-    switch (by) {
-      case CATEGORY_KEY:
-        this.filteringBy.category = value
-        if (value) {
-          this.restaurants = this.restaurants.map(r => {
-            r.shown = !(r.categories.indexOf(value) === -1)
-            return r
-          })
-        } else {
-          this.restaurants = this.restaurants.map(r => {
-            r.shown = true
-            return r
-          })
-        }
-        break
-    }
+  setFilteringByCategory = action('setCategoryFilter', (value) => {
+    this.filteringBy.category = value
+
     return this.getFiltersFromURL()
   })
 
-  sort = action('sort', (by) => {
-    this.filteringBy.sort = by.toLowerCase()
-    switch (by) {
-      case RATING_KEY:
-        this.restaurants = this.restaurants.sort((a, b) => {
-          return a.averageRating - b.averageRating
-        })
-        break
-      default:
-        this.restaurants = this.restaurants.sort((a, b) => {
-          return a.index - b.index
-        })
-    }
+  setFilterinBySort = action('setFilterinBySort', (value) => {
+    this.filteringBy.sort = value
+
     return this.getFiltersFromURL()
   })
 
-  getFiltersFromURL = () => getFiltersFromURL(this.filteringBy)
+  getFiltersFromURL = () => getFiltersFromURLAsString(this.filteringBy)
 
-  getRestaurant = (id) => {
+  getRestaurantSelected = (id) => {
     getRestaurant(id)
       .then(action('setRestaurantSelect', this.setRestaurantSelected))
   }

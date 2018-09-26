@@ -112,7 +112,7 @@ const config = {
       chunks: ['runtime~main', 'vendors', 'main'],
       template: path.join(src, 'index.pug'),
       alwaysWriteToDisk: true,
-      inlineSource: 'runtime~.+\\.js$',
+      inlineSource: 'runtime~.+\\.js|css$',
       minify: {
         removeComments: true,
         collapseWhitespace: true,

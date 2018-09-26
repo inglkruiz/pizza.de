@@ -59,8 +59,7 @@ function mapData (data = []) {
         name: r.general.name,
         averageRating: r.rating.average,
         location: `${r.address.street_name} ${r.address.street_number} - ${r.address.city}, ${r.address.country}`,
-        categories: restaurantCategoriesArray,
-        shown: true
+        categories: restaurantCategoriesArray
       })
     }
   })
@@ -69,8 +68,8 @@ function mapData (data = []) {
     filters: {
       categories: Array.from(categories.values())
         .sort((a, b) => {
-          var A = a.toUpperCase() // ignore upper and lowercase
-          var B = b.toUpperCase() // ignore upper and lowercase
+          const A = a.toUpperCase() // ignore upper and lowercase
+          const B = b.toUpperCase() // ignore upper and lowercase
           if (A < B) {
             return -1
           }

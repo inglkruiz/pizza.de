@@ -2,22 +2,21 @@ import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
 
-export const CATEGORY_KEY = 'CATEGORY'
-
 class CategoryFilter extends Component {
   handleChange = (evt) => {
     this.props.history.push(
-      `${this.props.location.pathname}?${this.props.filter(CATEGORY_KEY, evt.target.value)}`
+      `${this.props.location.pathname}?${this.props.setFilteringByCategory(evt.target.value)}`
     )
   }
 
   render () {
+    const { filters, filteringBy } = this.props
     return (
       <div className='form-group'>
-        <select id='category' className='form-control' onChange={this.handleChange}>
+        <select id='category' className='form-control' onChange={this.handleChange} value={filteringBy.category}>
           <option value=''>-- All Categories --</option>
           {
-            this.props.filters.categories.map(value => (
+            filters.categories.map(value => (
               <option key={value} value={value}>{value}</option>
             ))
           }
@@ -29,5 +28,6 @@ class CategoryFilter extends Component {
 
 export default withRouter(inject(allStores => ({
   filters: allStores.main.filters,
-  filter: allStores.main.filter
+  setFilteringByCategory: allStores.main.setFilteringByCategory,
+  filteringBy: allStores.main.filteringBy
 }))(observer(CategoryFilter)))

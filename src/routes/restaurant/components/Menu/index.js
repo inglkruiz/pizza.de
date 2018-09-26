@@ -1,10 +1,15 @@
 import React from 'react'
-import Loadable from 'react-loadable'
-import Loading from '../../../../components/Loading'
 
-const Menu = Loadable({
-  loader: () => import('./Body'),
-  loading: () => (<Loading />)
-})
+import Section from './Section'
 
-export default Menu
+export default function Menu (props) {
+  return (
+    <div className='menu'>
+      {
+        props.menu.map(section => (
+          <Section key={section.id} name={section.name} items={section.items} />
+        ))
+      }
+    </div>
+  )
+}

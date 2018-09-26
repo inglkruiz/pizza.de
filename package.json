@@ -8,7 +8,8 @@
     "build:prod": "cross-env NODE_ENV=production webpack -p",
     "start": "cross-env NODE_ENV=development webpack-dev-server",
     "build": "cross-env NODE_ENV=development webpack",
-    "deploy": "npm run build:prod && firebase deploy"
+    "deploy": "npm run build:prod && firebase deploy",
+    "test:prod": "npm run build:prod && firebase serve"
   },
   "engines": {
     "node": ">=8.11.4 <9"

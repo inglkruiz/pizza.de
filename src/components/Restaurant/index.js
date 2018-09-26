@@ -6,13 +6,11 @@ import Loading from '../Loading'
 import './style'
 
 const Restaurant = Loadable({
-  loader: () => import('./Body'),
+  loader: () => import('./Component'),
   loading: () => (<Loading />)
 })
 
 export function RestaurantAsLink (props) {
-  if (!props.shown) return null
-
   return (
     <Link className='restaurant' to={`/restaurant/${props.id}`}>
       <Restaurant {...props}>

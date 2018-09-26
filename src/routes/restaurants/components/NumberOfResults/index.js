@@ -1,10 +1,11 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
 
-function NumberOfResults (props) {
+function NumberOfResults ({ restaurants }) {
+  if (!restaurants.length) return null
   return (
     <h5>
-      We Found {this.props.restaurants.length} Restaurants for You!
+      We Found {restaurants.length} Restaurants for You!
     </h5>
   )
 }

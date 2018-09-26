@@ -2,19 +2,19 @@ import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
 
-export const RATING_KEY = 'RATING'
+export const RATING_KEY = 'rating'
 
 class RatingSort extends Component {
   handleChange = (evt) => {
     this.props.history.push(
-      `${this.props.location.pathname}?${this.props.sort(evt.target.value)}`
+      `${this.props.location.pathname}?${this.props.setFilterinBySort(evt.target.value)}`
     )
   }
 
   render () {
     return (
       <div className='form-group'>
-        <select id='category' className='form-control' onChange={this.handleChange}>
+        <select id='category' className='form-control' onChange={this.handleChange} value={this.props.filteringBy.sort}>
           <option value=''>-- Sort By --</option>
           <option value={RATING_KEY}>Avg. Rating</option>
         </select>
@@ -24,5 +24,6 @@ class RatingSort extends Component {
 }
 
 export default withRouter(inject(allStores => ({
-  sort: allStores.main.sort
+  setFilterinBySort: allStores.main.setFilterinBySort,
+  filteringBy: allStores.main.filteringBy
 }))(observer(RatingSort)))

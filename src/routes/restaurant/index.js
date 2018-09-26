@@ -12,7 +12,7 @@ class RestaurantsList extends Component {
   constructor (props) {
     super(props)
 
-    this.props.getRestaurant(this.props.match.params.id)
+    this.props.getRestaurantSelected(this.props.match.params.id)
   }
 
   componentWillUnmount () {
@@ -32,7 +32,7 @@ class RestaurantsList extends Component {
 }
 
 export default inject(allStores => ({
-  getRestaurant: allStores.main.getRestaurant,
+  getRestaurantSelected: allStores.main.getRestaurantSelected,
   restaurantSelected: allStores.main.restaurantSelected,
   setRestaurantSelected: allStores.main.setRestaurantSelected
 }))(observer(RestaurantsList))
