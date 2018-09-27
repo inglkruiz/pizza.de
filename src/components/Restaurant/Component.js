@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react'
 
+import './style'
+
 export default function Restaurant ({
   id,
   logo,

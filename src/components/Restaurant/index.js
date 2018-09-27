@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 import Loadable from 'react-loadable'
 import Loading from '../Loading'
 
-import './style'
-
 const Restaurant = Loadable({
   loader: () => import('./Component'),
   loading: () => (<Loading />)
