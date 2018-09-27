@@ -1,38 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
+import Loadable from 'react-loadable'
 import { inject, observer } from 'mobx-react'
-import { Link } from 'react-router-dom'
+import Loading from '../../components/Loading'
 
-import { restaurants } from '../../routes'
-import { RestaurantAsBlock as Restaurant } from '../../components/Restaurant'
-import Menu from './components/Menu'
-
-import './style'
-
-class RestaurantsList extends Component {
-  constructor (props) {
-    super(props)
-
-    this.props.getRestaurantSelected(this.props.match.params.id)
-  }
-
-  componentWillUnmount () {
-    this.props.setRestaurantSelected(null)
-  }
-
-  render () {
-    if (!this.props.restaurantSelected) return null
-    return (
-      <div className='restaurant-details'>
-        <Link className='btn btn-lg btn-light restaurant-details__back-btn' to={restaurants}><i className='icon-angle-left' />Back to Results</Link>
-        <Restaurant {...this.props.restaurantSelected.base} />
-        <Menu menu={this.props.restaurantSelected.menu} />
-      </div>
-    )
-  }
-}
+const Restaurant = Loadable({
+  loader: () => import('./Component'),
+  loading: () => (<Loading />)
+})
 
 export default inject(allStores => ({
   getRestaurantSelected: allStores.main.getRestaurantSelected,
   restaurantSelected: allStores.main.restaurantSelected,
   setRestaurantSelected: allStores.main.setRestaurantSelected
-}))(observer(RestaurantsList))
+}))(observer(Restaurant))
