@@ -9,6 +9,7 @@ import { hot } from 'react-hot-loader'
 
 import Restaurants from './routes/restaurants'
 import Restaurant from './routes/restaurant'
+import AuthorizationError from './routes/authorization-error'
 import routes from './routes'
 
 export default hot(module)(function App () {
@@ -18,6 +19,7 @@ export default hot(module)(function App () {
         <Switch>
           <Route path={routes.restaurants} component={Restaurants} />
           <Route path={`${routes.restaurant}:id/`} component={Restaurant} />
+          <Route path={routes.authorizationError} component={AuthorizationError} />
           <Redirect to={routes.restaurants} />
         </Switch>
       </Router>

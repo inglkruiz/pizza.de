@@ -12,7 +12,7 @@ class RestaurantsList extends Component {
   constructor (props) {
     super(props)
 
-    props.getRestaurants()
+    props.loadRestaurants()
     props.getFilters()
   }
 
@@ -33,6 +33,6 @@ class RestaurantsList extends Component {
 }
 
 export default inject(allStores => ({
-  getRestaurants: allStores.main.getRestaurants,
+  loadRestaurants: allStores.main.loadRestaurants,
   getFilters: allStores.main.getFilters
 }))(observer(RestaurantsList))

@@ -1,10 +1,12 @@
 import { fetch } from 'whatwg-fetch'
 import URLs from '../URLs'
+import { authorizationError as authorizationErrorRoute } from '../../routes'
+import { SESSION_STORAGE_TOKEN_KEY, SESSION_STORAGE_AUTHORIZATION_ERROR_KEY } from '../constants'
 
 let token
 
 if (window.sessionStorage) {
-  token = sessionStorage.getItem('token')
+  token = sessionStorage.getItem(SESSION_STORAGE_TOKEN_KEY)
 }
 
 let promise
@@ -29,7 +31,7 @@ function getToken () {
  */
 function setToken ({ token }) {
   if (window.sessionStorage) {
-    sessionStorage.setItem('token', token)
+    sessionStorage.setItem(SESSION_STORAGE_TOKEN_KEY, token)
   }
 
   return token
@@ -39,12 +41,20 @@ function setToken ({ token }) {
  *
  */
 function fetchToken () {
-  return fetch(`${URLs.MAIN_API}auth`)
-    .then(response => response.json())
+  const authorizationError = sessionStorage.getItem(SESSION_STORAGE_AUTHORIZATION_ERROR_KEY)
+  if (!authorizationError) {
+    return fetch(`${URLs.MAIN_API}auth`)
+      .then(response => response.json())
+      .catch(() => {
+        sessionStorage.setItem(SESSION_STORAGE_AUTHORIZATION_ERROR_KEY, true)
+        window.location.assign(`${window.location.origin}${authorizationErrorRoute}`)
+      })
+  }
+  return Promise.reject(new Error('Network request failed - Authorization token request'))
 }
 
 export function resetToken (params) {
-  sessionStorage.removeItem('token')
+  sessionStorage.removeItem(SESSION_STORAGE_TOKEN_KEY)
   promise = getToken()
 
   return promise

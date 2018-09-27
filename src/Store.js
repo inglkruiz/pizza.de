@@ -10,7 +10,7 @@ configure({
 class Store {
   constructor () {
     extendObservable(this, {
-      restaurants: [],
+      loadedRestaurants: [],
       restaurantSelected: null,
       filters: {
         categories: []
@@ -19,23 +19,23 @@ class Store {
     })
   }
 
-  getRestaurants = () => {
+  loadRestaurants = () => {
     getRestaurants()
-      .then(action('setRestaurants', this.setRestaurants))
+      .then(this.setLoadedRestaurants)
   }
 
-  setRestaurants = (restaurants) => {
-    this.restaurants.replace(restaurants)
-  }
+  setLoadedRestaurants = action('setLoadedRestaurants', (loadedRestaurants) => {
+    this.loadedRestaurants = loadedRestaurants
+  })
 
   getFilters = () => {
     getFilters()
-      .then(action('setFilters', this.setFilters))
+      .then(this.setFilters)
   }
 
-  setFilters = (filters) => {
+  setFilters = action('setFilters', (filters) => {
     this.filters = filters
-  }
+  })
 
   setFilteringByCategory = action('setCategoryFilter', (value) => {
     this.filteringBy.category = value
@@ -53,11 +53,38 @@ class Store {
 
   getRestaurantSelected = (id) => {
     getRestaurant(id)
-      .then(action('setRestaurantSelect', this.setRestaurantSelected))
+      .then(this.setRestaurantSelected)
   }
 
-  setRestaurantSelected = (restaurant) => {
+  setRestaurantSelected = action('setRestaurantSelect', (restaurant) => {
     this.restaurantSelected = restaurant
+  })
+
+  filter = (restaurant) => {
+    return restaurant.categories.indexOf(this.filteringBy.category) !== -1
+  }
+
+  sort = (a, b) => {
+    switch (this.filteringBy.sort) {
+      case 'rating':
+        return a.averageRating - b.averageRating
+      default:
+        return a.index - b.index
+    }
+  }
+
+  get restaurants () {
+    const { filteringBy, loadedRestaurants, filters } = this
+    let list
+    if (filteringBy.category && filters.categories.indexOf(filteringBy.category) !== -1) {
+      list = loadedRestaurants.filter(this.filter)
+    } else {
+      list = loadedRestaurants
+    }
+
+    list = list.sort(this.sort)
+
+    return list
   }
 }
 
