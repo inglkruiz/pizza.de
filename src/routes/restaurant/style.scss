@@ -1,4 +1,4 @@
-@import '../../sass/bootstrap-core';
+@import "../../sass/bootstrap-core";
 
 .restaurant-details {
   padding: {
@@ -17,7 +17,7 @@
       color: $gray-400;
       radius: 0.25rem;
     }
-    
+
     .section {
       &-list {
         padding-left: 1rem;
@@ -36,7 +36,7 @@
         &__name {
           font-weight: $font-weight-semibold;
         }
-        
+
         &__price {
           min-width: 5rem;
           text-align: right;

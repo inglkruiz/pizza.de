@@ -10,6 +10,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const InlineSourcePlugin = require('html-webpack-inline-source-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
+const StyleLintPlugin = require('stylelint-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -127,7 +128,8 @@ const config = {
     }),
     new CopyWebpackPlugin([
       { from: path.join(src, 'static'), to: dist }
-    ])/* ,
+    ]),
+    new StyleLintPlugin()/* ,
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery'

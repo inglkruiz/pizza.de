@@ -1,5 +1,6 @@
-const autoprefixer = require('autoprefixer')
-
 module.exports = {
-  plugins: [autoprefixer]
+  plugins: [
+    require('autoprefixer'),
+    require('postcss-flexbugs-fixes')
+  ]
 }

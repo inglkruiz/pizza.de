@@ -1,4 +1,4 @@
-@import '../../sass/bootstrap-core';
+@import "../../sass/bootstrap-core";
 
 .restaurants {
   padding: {
@@ -38,14 +38,14 @@
     padding: {
       top: 2rem;
     }
-  
+
     .logo-brand {
       display: inline-block;
       margin: {
         bottom: 2rem;
       }
     }
-    
+
     .heading-bar {
       display: flex;
       padding: {
@@ -57,7 +57,7 @@
       .mobile-filter-button {
         display: none;
       }
-  
+
       .filters-sort {
         padding: 0;
         margin-left: auto;
@@ -69,10 +69,9 @@
 
         .form-group {
           margin-bottom: 0;
-    
+
           &:not(:last-child) {
             margin-right: 0.5rem;
-           
           }
         }
       }

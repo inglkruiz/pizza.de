@@ -1,6 +1,6 @@
-@import '../../sass/bootstrap-core';
+@import "../../sass/bootstrap-core";
 
-$restaurant: 'restaurant';
+$restaurant: "restaurant";
 
 .#{$restaurant} {
   display: flex;
@@ -16,7 +16,7 @@ $restaurant: 'restaurant';
   flex-flow: column;
 
   @include box-shadow(0px 2px 2px $gray-400);
-  
+
   &__logo {
     align-self: center;
     height: 130px;
@@ -52,7 +52,7 @@ $restaurant: 'restaurant';
   }
 }
 
-@include media-breakpoint-up(md) { 
+@include media-breakpoint-up(md) {
   .#{$restaurant} {
     flex-flow: row;
 
@@ -60,11 +60,11 @@ $restaurant: 'restaurant';
       padding: 0 0.5rem;
       flex: 1 0;
     }
-  
+
     &__category {
       margin-bottom: 0.25rem;
     }
-  
+
     &__cta {
       margin-left: auto;
       align-self: center;
@@ -72,7 +72,7 @@ $restaurant: 'restaurant';
   }
 }
 
-@include media-breakpoint-up(lg) { 
+@include media-breakpoint-up(lg) {
   .#{$restaurant} {
     flex-flow: row;
 
@@ -81,18 +81,18 @@ $restaurant: 'restaurant';
       color: $body-color;
       border-color: $primary;
       @include box-shadow(0px 4px 10px 4px $gray-400);
-  
+
       .#{$restaurant}__cta {
         color: color-yiq(darken($primary, 7.5%));
         @include gradient-bg(darken($primary, 7.5%));
         border-color: darken($primary, 10%);
       }
     }
-  
+
     &__info {
       padding: 0.5rem 1rem 0 1rem;
     }
-  
+
     &__name {
       display: inline-block;
       margin-right: 1rem;
@@ -101,7 +101,7 @@ $restaurant: 'restaurant';
     &__location {
       margin-bottom: 1rem;
     }
-  
+
     &__category {
       margin-bottom: 0;
     }
