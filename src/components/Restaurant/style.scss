@@ -13,23 +13,12 @@ $restaurant: 'restaurant';
   }
   color: $body-color;
   padding: 0.5rem;
+  flex-flow: column;
 
   @include box-shadow(0px 2px 2px $gray-400);
   
-  @include hover-focus {
-    text-decoration: none;
-    color: $body-color;
-    border-color: $primary;
-    @include box-shadow(0px 4px 10px 4px $gray-400);
-
-    .#{$restaurant}__cta {
-      color: color-yiq(darken($primary, 7.5%));
-      @include gradient-bg(darken($primary, 7.5%));
-      border-color: darken($primary, 10%);
-    }
-  }
-
   &__logo {
+    align-self: center;
     height: 130px;
     border: {
       width: 1px;
@@ -39,21 +28,15 @@ $restaurant: 'restaurant';
     }
   }
 
-  &__info {
-    padding: 0.5rem 0.5rem 0 1rem;
-  }
-
-  &__name {
-    display: inline-block;
-    margin-right: 1rem;
-  }
-
   &__average-rating {
-    display: inline-block;
     font-size: $h5-font-size;
     font-weight: $font-weight-semibold;
     color: $gray-600;
     line-height: 1.2;
+  }
+
+  &__location {
+    margin-bottom: 0.25rem;
   }
 
   &__category {
@@ -61,14 +44,66 @@ $restaurant: 'restaurant';
     padding: 0.5rem 0.8rem;
     background-color: $gray-300;
     border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
 
     &:not(:last-child) {
       margin-right: 0.5rem;
     }
   }
+}
 
-  &__cta {
-    margin-left: auto;
-    align-self: center;
+@include media-breakpoint-up(md) { 
+  .#{$restaurant} {
+    flex-flow: row;
+
+    &__info {
+      padding: 0 0.5rem;
+      flex: 1 0;
+    }
+  
+    &__category {
+      margin-bottom: 0.25rem;
+    }
+  
+    &__cta {
+      margin-left: auto;
+      align-self: center;
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) { 
+  .#{$restaurant} {
+    flex-flow: row;
+
+    @include hover-focus {
+      text-decoration: none;
+      color: $body-color;
+      border-color: $primary;
+      @include box-shadow(0px 4px 10px 4px $gray-400);
+  
+      .#{$restaurant}__cta {
+        color: color-yiq(darken($primary, 7.5%));
+        @include gradient-bg(darken($primary, 7.5%));
+        border-color: darken($primary, 10%);
+      }
+    }
+  
+    &__info {
+      padding: 0.5rem 1rem 0 1rem;
+    }
+  
+    &__name {
+      display: inline-block;
+      margin-right: 1rem;
+    }
+
+    &__location {
+      margin-bottom: 1rem;
+    }
+  
+    &__category {
+      margin-bottom: 0;
+    }
   }
 }

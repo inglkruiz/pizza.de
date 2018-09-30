@@ -11,19 +11,34 @@ class Restaurants extends Component {
   constructor (props) {
     super(props)
 
+    this.state = {
+      mobileSideMenuIsOpen: false
+    }
+
     props.loadRestaurants()
     props.getFilters()
+  }
+
+  handleMobileFiltersSort = () => {
+    this.setState({ mobileSideMenuIsOpen: !this.state.mobileSideMenuIsOpen })
   }
 
   render () {
     return (
       <div className='restaurants'>
         <img src='https://via.placeholder.com/200x200' className='logo-brand' />
-        <div className='filters-sort-bar'>
+        <div className='heading-bar'>
+          <button type='button' className='btn btn-primary btn-lg mobile-filter-button' onClick={this.handleMobileFiltersSort}>
+            {this.state.mobileSideMenuIsOpen ? 'Done' : 'Filter & Sort'}
+          </button>
           <NumberOfResults />
-          <h5 className='filters'>Filter</h5>
-          <CategoryFilter />
-          <Sort />
+          <div className={[
+            'filters-sort',
+            this.state.mobileSideMenuIsOpen ? 'filters-sort--open' : ''
+          ].join(' ')}>
+            <CategoryFilter />
+            <Sort />
+          </div>
         </div>
         <List />
       </div>

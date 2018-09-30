@@ -12,7 +12,7 @@ class CategoryFilter extends Component {
   render () {
     const { filters, filteringBy } = this.props
     return (
-      <div className='form-group'>
+      <div className='form-group category-filter'>
         <select id='category' className='form-control' onChange={this.handleChange} value={filteringBy.category}>
           <option value=''>-- All Categories --</option>
           {
