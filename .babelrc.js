@@ -2,7 +2,7 @@ module.exports = {
   'presets': [
     ['@babel/preset-env', {
       'modules': false,
-      'useBuiltIns': 'entry'
+      'useBuiltIns': 'entry' // 'usage|entry'
     }],
     ['@babel/preset-react', {
       development: process.env.NODE_ENV === 'development'

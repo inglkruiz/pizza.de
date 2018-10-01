@@ -36,11 +36,11 @@ const config = {
         enforce: 'pre',
         test: /\.jsx?$/,
         loader: 'standard-loader',
-        exclude: /(node_modules)/
+        exclude: /node_modules/
       },
       {
         test: /\.jsx?$/,
-        exclude: /(node_modules)/,
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -80,10 +80,17 @@ const config = {
   optimization: {
     splitChunks: {
       cacheGroups: {
+        'core-js': {
+          test: /[\\\/]node_modules[\\\/]core-js/,
+          name: 'core-js',
+          chunks: 'initial',
+          priority: -9
+        },
         vendors: {
-          test: /[\\/]node_modules[\\/]/,
+          test: /[\\\/]node_modules[\\\/](?!core-js)/,
           name: 'vendors',
-          chunks: 'all'
+          chunks: 'all',
+          priority: -10
         }
       }
     },
@@ -116,7 +123,7 @@ const config = {
     new HtmlWebpackPlugin({
       filename: path.join(dist, 'index.html'),
       chunksSortMode: 'manual',
-      chunks: ['runtime~main', 'vendors', 'main'],
+      chunks: ['runtime~main', 'core-js', 'vendors', 'main'],
       template: path.join(src, 'index.pug'),
       alwaysWriteToDisk: true,
       inlineSource: 'runtime~.+\\.js|css$',
