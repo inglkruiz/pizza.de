@@ -80,7 +80,7 @@ const config = {
   optimization: {
     splitChunks: {
       cacheGroups: {
-        commons: {
+        vendors: {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendors',
           chunks: 'all'
@@ -92,7 +92,12 @@ const config = {
       new UglifyJsPlugin({
         sourceMap: isDev,
         cache: isDev,
-        parallel: true
+        parallel: true,
+        uglifyOptions: {
+          output: {
+            comments: false
+          }
+        }
       }),
       new OptimizeCSSAssetsPlugin({
         cssProcessorOptions: {
