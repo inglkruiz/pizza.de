@@ -2,6 +2,14 @@ import React, { Fragment } from 'react'
 
 import './style'
 
+if (BUNDLING_PRODUCTION && window.innerWidth >= 768) {
+  import('./style-tablet')
+}
+
+if (BUNDLING_PRODUCTION && window.innerWidth >= 992) {
+  import('./style-desktop')
+}
+
 export default function Restaurant ({
   id,
   logo,

@@ -7,6 +7,10 @@ import NumberOfResults from './components/NumberOfResults'
 
 import './style'
 
+if (BUNDLING_PRODUCTION && window.innerWidth >= 768) {
+  import('./style-tablet')
+}
+
 class Restaurants extends Component {
   constructor (props) {
     super(props)

@@ -6,7 +6,6 @@ import { Provider } from 'mobx-react'
 
 import mainStore from './Store'
 
-import './style'
 render(
   <Provider main={mainStore}>
     <App />

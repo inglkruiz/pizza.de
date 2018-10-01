@@ -25,7 +25,7 @@ const config = {
   },
   output: {
     path: dist,
-    filename: `[name]${isProd ? '.[chunkhash]' : ''}.js`,
+    filename: `[name]${isProd ? '.[contenthash]' : ''}.js`,
     publicPath: '/'
   },
   module: {
@@ -129,7 +129,12 @@ const config = {
     new CopyWebpackPlugin([
       { from: path.join(src, 'static'), to: dist }
     ]),
-    new StyleLintPlugin()/* ,
+    new StyleLintPlugin({
+      syntax: 'scss'
+    }),
+    new webpack.DefinePlugin({
+      BUNDLING_PRODUCTION: JSON.stringify(isProd)
+    })/* ,
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery'
@@ -141,7 +146,7 @@ const config = {
         new webpack.HashedModuleIdsPlugin(),
         new MiniCssExtractPlugin({
           // Options similar to the same options in webpackOptions.output
-          filename: `[name]${isProd ? '.[chunkhash]' : ''}.css`
+          filename: `[name]${isProd ? '.[contenthash]' : ''}.css`
         }),
         new CompressionPlugin({
           test: /\.(jsx?|css|html)$/

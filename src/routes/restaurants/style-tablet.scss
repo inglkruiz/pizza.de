@@ -1,0 +1,47 @@
+@import "../../sass/bootstrap-core";
+
+@include media-breakpoint-up(md) {
+  .restaurants {
+    padding: {
+      top: 2rem;
+    }
+
+    .logo-brand {
+      display: inline-block;
+      margin: {
+        bottom: 2rem;
+      }
+    }
+
+    .heading-bar {
+      display: flex;
+      padding: {
+        top: 0.5rem;
+      }
+      margin-bottom: 1rem;
+      align-items: flex-end;
+
+      .mobile-filter-button {
+        display: none;
+      }
+
+      .filters-sort {
+        padding: 0;
+        margin-left: auto;
+        position: initial;
+        left: auto;
+        width: auto;
+        height: auto;
+        display: flex;
+
+        .form-group {
+          margin-bottom: 0;
+
+          &:not(:last-child) {
+            margin-right: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}
