@@ -13,6 +13,7 @@ const CompressionPlugin = require('compression-webpack-plugin')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'
+const isDev = process.env.NODE_ENV === 'development'
 
 const dist = path.join(__dirname, 'public')
 const src = path.join(__dirname, 'src')
@@ -64,7 +65,7 @@ const config = {
           {
             loader: 'pug-loader',
             options: {
-              pretty: !isProd
+              pretty: isDev
             }
           }
         ]
@@ -89,8 +90,8 @@ const config = {
     runtimeChunk: true,
     minimizer: [
       new UglifyJsPlugin({
-        sourceMap: !isProd,
-        cache: true,
+        sourceMap: isDev,
+        cache: isDev,
         parallel: true
       }),
       new OptimizeCSSAssetsPlugin({
@@ -164,7 +165,7 @@ const config = {
   },
   devServer: {
     contentBase: dist,
-    hot: !isProd,
+    hot: isDev,
     open: true,
     port: 9000,
     openPage: 'restaurants/',

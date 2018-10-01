@@ -2,6 +2,11 @@ import React, { Fragment } from 'react'
 
 import './style'
 
+if (!BUNDLING_PRODUCTION) {
+  import('./style-tablet')
+  import('./style-desktop')
+}
+
 if (BUNDLING_PRODUCTION && window.innerWidth >= 768) {
   import('./style-tablet')
 }

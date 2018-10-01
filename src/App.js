@@ -14,6 +14,10 @@ import routes from './routes'
 
 import './style'
 
+if (!BUNDLING_PRODUCTION) {
+  import('./style-tablet')
+}
+
 if (BUNDLING_PRODUCTION && window.innerWidth >= 768) {
   import('./style-tablet')
 }
