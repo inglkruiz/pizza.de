@@ -14,7 +14,7 @@ function executeCall () {
       }
       return response
     })
-    .then(({data}) => data)
+    .then(({ data }) => data)
     .then(mapData)
 
   return promise
@@ -58,7 +58,9 @@ function mapData (data = []) {
         logo: r.general.logo_uri,
         name: r.general.name,
         averageRating: r.rating.average,
-        location: `${r.address.street_name} ${r.address.street_number} - ${r.address.city}, ${r.address.country}`,
+        location: `${r.address.street_name} ${r.address.street_number} - ${
+          r.address.city
+        }, ${r.address.country}`,
         categories: restaurantCategoriesArray
       })
     }
@@ -66,20 +68,19 @@ function mapData (data = []) {
   return {
     restaurants: Array.from(dataMap.values()),
     filters: {
-      categories: Array.from(categories.values())
-        .sort((a, b) => {
-          const A = a.toUpperCase() // ignore upper and lowercase
-          const B = b.toUpperCase() // ignore upper and lowercase
-          if (A < B) {
-            return -1
-          }
-          if (A > B) {
-            return 1
-          }
+      categories: Array.from(categories.values()).sort((a, b) => {
+        const A = a.toUpperCase() // ignore upper and lowercase
+        const B = b.toUpperCase() // ignore upper and lowercase
+        if (A < B) {
+          return -1
+        }
+        if (A > B) {
+          return 1
+        }
 
-          // names must be equal
-          return 0
-        })
+        // names must be equal
+        return 0
+      })
     }
   }
 }
@@ -105,7 +106,7 @@ function fetchRestaurants () {
 export function getRestaurants () {
   return fetchRestaurants()
     .then(getRestaurantsData)
-    .catch((error) => {
+    .catch(error => {
       console.log('request failed', error)
     })
 }
@@ -117,7 +118,7 @@ export function getRestaurants () {
 export function getFilters () {
   return fetchRestaurants()
     .then(getFiltersData)
-    .catch((error) => {
+    .catch(error => {
       console.log('request failed', error)
     })
 }

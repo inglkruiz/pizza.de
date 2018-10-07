@@ -81,13 +81,13 @@ const config = {
     splitChunks: {
       cacheGroups: {
         'core-js': {
-          test: /[\\\/]node_modules[\\\/]core-js/,
+          test: /[\\/]node_modules[\\/]core-js/,
           name: 'core-js',
           chunks: 'initial',
           priority: -9
         },
         vendors: {
-          test: /[\\\/]node_modules[\\\/](?!core-js)/,
+          test: /[\\/]node_modules[\\/](?!core-js)/,
           name: 'vendors',
           chunks: 'all',
           priority: -10
