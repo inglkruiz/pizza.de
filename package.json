@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "analyze": "cross-env ANALYZE=true npm run build:prod",
-    "build:prod": "cross-env NODE_ENV=production webpack -p",
-    "start": "cross-env NODE_ENV=development webpack-dev-server",
+    "analyze": "cross-env NODE_ENV=production webpack -p --config webpack/analyze.config.js",
+    "build:prod": "cross-env NODE_ENV=production webpack -p --config webpack/prod.config.js",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack/dev.config.js",
     "build": "cross-env NODE_ENV=development webpack",
     "deploy": "npm run build:prod && firebase deploy",
     "test:prod": "npm run build:prod && firebase serve"
