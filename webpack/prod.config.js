@@ -5,7 +5,9 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const InlineSourcePlugin = require('html-webpack-inline-source-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 const commonConfig = require('./common.config')
+const paths = require('./utils/paths')
 
 const config = {
   output: {
@@ -51,8 +53,13 @@ const config = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin([paths.dist], { root: paths.context }),
     new InlineSourcePlugin(),
     new webpack.HashedModuleIdsPlugin(),
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 15,
+      minChunkSize: 10000
+    }),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       filename: '[name].[contenthash].css'

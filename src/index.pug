@@ -20,5 +20,7 @@ html(lang="en")
   body
     //- block content
     #root
+    if !htmlWebpackPlugin.options.BUNDLING_PRODUCTION
+      script(src="/dll/vendors.dll.js")
 
     //- block scripts

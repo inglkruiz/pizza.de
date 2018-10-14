@@ -2,14 +2,20 @@ import React from 'react'
 
 import Section from './Section'
 
-export default function Menu (props) {
+function Menu ({ menu }) {
+  if (!menu.length) return null
+
   return (
     <div className='menu'>
-      {
-        props.menu.map(section => (
-          <Section key={section.id} name={section.name} items={section.items} />
-        ))
-      }
+      {menu.map(section => (
+        <Section key={section.id} name={section.name} items={section.items} />
+      ))}
     </div>
   )
 }
+
+Menu.defaultProps = {
+  menu: []
+}
+
+export default Menu

@@ -1,6 +1,8 @@
+const path = require('path')
 const webpackMerge = require('webpack-merge')
 const webpack = require('webpack')
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 const commonConfig = require('./common.config')
 const paths = require('./utils/paths')
 
@@ -11,9 +13,14 @@ const config = {
     filename: '[name].js'
   },
   plugins: [
+    new CleanWebpackPlugin([paths.dist], { root: paths.context, exclude: ['dll'] }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackHarddiskPlugin()
+    new HtmlWebpackHarddiskPlugin(),
+    new webpack.DllReferencePlugin({
+      context: paths.context,
+      manifest: require(path.join(paths.dll, 'vendors-manifest.json'))
+    })
   ],
   devServer: {
     contentBase: paths.dist,

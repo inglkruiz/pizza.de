@@ -15,7 +15,7 @@ if (BUNDLING_PRODUCTION && window.innerWidth >= 992) {
   import('./style-desktop')
 }
 
-export default function Restaurant ({
+function Restaurant ({
   id,
   logo,
   name,
@@ -31,22 +31,26 @@ export default function Restaurant ({
       <div className='restaurant__info'>
         <h4 className='restaurant__name'>{name}</h4>
         <span className='restaurant__average-rating'>
-          Avg. Rating ({averageRating}/5)
+          Avg. Rating ({averageRating}
+          /5)
         </span>
-        <address className='restaurant__location'>
-          Location: {location}
-        </address>
+        <address className='restaurant__location'>Location: {location}</address>
         <div>
-          {
+          {categories.length &&
             categories.map((cat, i) => (
               <span key={`${id}_cat_${i}`} className='restaurant__category'>
                 {cat}
               </span>
-            ))
-          }
+            ))}
         </div>
       </div>
       {children}
     </Fragment>
   )
 }
+
+Restaurant.defaultProps = {
+  categories: []
+}
+
+export default Restaurant

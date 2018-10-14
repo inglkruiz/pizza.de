@@ -3,9 +3,7 @@ import Loadable from 'react-loadable'
 
 import Loading from '../../../../../components/Loading'
 
-const Section = Loadable({
+export default Loadable({
   loader: () => import('./Component'),
-  loading: () => (<Loading />)
+  loading: () => <Loading />
 })
-
-export default Section
