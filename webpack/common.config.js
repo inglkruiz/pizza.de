@@ -12,7 +12,7 @@ const isDev = process.env.NODE_ENV === 'development'
 const config = {
   context: paths.context,
   entry: {
-    main: path.join(paths.src, 'index.js')
+    'pizza.de': path.join(paths.app, 'pizza.de/index.js')
   },
   output: {
     path: paths.dist,
@@ -25,11 +25,11 @@ const config = {
         enforce: 'pre',
         test: /\.jsx?$/,
         loader: 'standard-loader',
-        exclude: /node_modules/
+        include: [paths.src]
       },
       {
         test: /\.jsx?$/,
-        exclude: /node_modules/,
+        include: [paths.src],
         use: {
           loader: 'babel-loader',
           options: {
@@ -61,7 +61,7 @@ const config = {
       },
       {
         test: /\.html$/,
-        exclude: /node_modules/,
+        include: [paths.src],
         use: { loader: 'html-loader' }
       }
     ]
@@ -70,12 +70,12 @@ const config = {
     new webpack.optimize.OccurrenceOrderPlugin(true),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new HtmlWebpackPlugin({
-      filename: path.join(paths.dist, 'index.html'),
+      filename: path.join(paths.dist, 'pizza.de/index.html'),
       chunksSortMode: 'manual',
-      chunks: ['runtime~main', 'core-js', 'vendors', 'main'],
-      template: path.join(paths.src, 'index.pug'),
+      chunks: ['pizza.de/runtime', 'core-js', 'vendors', 'pizza.de'],
+      template: path.join(paths.app, 'pizza.de/index.pug'),
       alwaysWriteToDisk: true,
-      inlineSource: 'runtime~.+\\.js|css$',
+      inlineSource: 'runtime/.*.js|css$',
       minify: {
         removeComments: true,
         collapseWhitespace: true,

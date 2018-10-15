@@ -11,11 +11,19 @@ const paths = require('./utils/paths')
 
 const config = {
   output: {
-    filename: '[name].[contenthash].js'
+    filename: (chunkData) => {
+      const name = 'main.[contenthash].js'
+      if (chunkData.chunk.name === 'pizza.de/runtime') {
+        return `pizza.de/runtime/${name}`
+      }
+      return name
+    },
+    chunkFilename: 'pizza.de/[name]/main.[contenthash].js'
   },
   optimization: {
     splitChunks: {
       cacheGroups: {
+        default: false,
         'core-js': {
           test: /[\\/]node_modules[\\/]core-js/,
           name: 'core-js',
@@ -30,7 +38,11 @@ const config = {
         }
       }
     },
-    runtimeChunk: true,
+    runtimeChunk: {
+      name: (entrypoint) => {
+        return `${entrypoint.name}/runtime`
+      }
+    },
     minimizer: [
       new UglifyJsPlugin({
         sourceMap: false,
@@ -62,7 +74,11 @@ const config = {
     }),
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
-      filename: '[name].[contenthash].css'
+      // filename: 'main.[contenthash].css',
+      // filename: (chunkData) => {
+      //   return 'main.[contenthash].css'
+      // },
+      chunkFilename: 'pizza.de/[name]/main.[contenthash].css'
     }),
     new CompressionPlugin({
       test: /\.(jsx?|css|html)$/

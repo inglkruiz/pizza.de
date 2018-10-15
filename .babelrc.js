@@ -12,6 +12,7 @@ module.exports = {
     '@babel/plugin-transform-react-constant-elements',
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-syntax-dynamic-import',
+    '@babel/plugin-transform-runtime',
     'react-loadable/babel'
   ].concat(
     process.env.NODE_ENV === 'development'

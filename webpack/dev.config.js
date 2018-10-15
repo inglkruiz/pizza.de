@@ -8,9 +8,10 @@ const paths = require('./utils/paths')
 
 const config = {
   mode: 'development',
-  devtool: 'cheap-eval-source-map',
+  devtool: 'cheap-module-eval-source-map',
   output: {
-    filename: '[name].js'
+    filename: '[name]/main.js',
+    chunkFilename: 'pizza.de/[name]/main.js'
   },
   plugins: [
     new CleanWebpackPlugin([paths.dist], { root: paths.context, exclude: ['dll'] }),
@@ -19,7 +20,23 @@ const config = {
     new HtmlWebpackHarddiskPlugin(),
     new webpack.DllReferencePlugin({
       context: paths.context,
-      manifest: require(path.join(paths.dll, 'vendors-manifest.json'))
+      manifest: require(path.join(paths.dll, 'core-manifest.json'))
+    }),
+    new webpack.DllReferencePlugin({
+      context: paths.context,
+      manifest: require(path.join(paths.dll, 'react-manifest.json'))
+    }),
+    new webpack.DllReferencePlugin({
+      context: paths.context,
+      manifest: require(path.join(paths.dll, 'reactRouter-manifest.json'))
+    }),
+    new webpack.DllReferencePlugin({
+      context: paths.context,
+      manifest: require(path.join(paths.dll, 'reactLoadable-manifest.json'))
+    }),
+    new webpack.DllReferencePlugin({
+      context: paths.context,
+      manifest: require(path.join(paths.dll, 'mobx-manifest.json'))
     })
   ],
   devServer: {
@@ -27,10 +44,11 @@ const config = {
     hot: true,
     open: true,
     port: 9000,
-    openPage: 'restaurants/',
+    openPage: 'pizza.de/restaurants/',
     historyApiFallback: {
       rewrites: [
-        { from: /.*\/?/i, to: 'index.html' }
+        // { from: /.*\/?/i, to: 'index.html' }
+        { from: /^\/pizza.de\/.*\/?/i, to: '/pizza.de/index.html' }
       ]
     }
   },

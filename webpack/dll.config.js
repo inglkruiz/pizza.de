@@ -10,18 +10,22 @@ module.exports = {
     modules: ['node_modules']
   },
   entry: {
-    vendors: [ '@babel/polyfill', 'whatwg-fetch', 'react', 'react-dom', 'react-router-dom', 'mobx', 'mobx-react', 'react-loadable', 'prop-types' ]
+    core: ['@babel/polyfill', 'whatwg-fetch'],
+    react: ['react', 'react-dom', 'prop-types'],
+    reactRouter: ['react-router-dom'],
+    reactLoadable: ['react-loadable'],
+    mobx: ['mobx', 'mobx-react']
   },
   output: {
     path: dll,
     filename: '[name].dll.js',
-    library: '[name]'
+    library: '[name]_[hash]'
   },
   plugins: [
     new CleanWebpackPlugin([dist], { root: context }),
     new webpack.DllPlugin({
       path: path.join(dll, '[name]-manifest.json'),
-      name: '[name]'
+      name: '[name]_[hash]'
     })
   ]
 }
