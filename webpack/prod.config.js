@@ -73,11 +73,6 @@ const config = {
       minChunkSize: 10000
     }),
     new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // filename: 'main.[contenthash].css',
-      // filename: (chunkData) => {
-      //   return 'main.[contenthash].css'
-      // },
       chunkFilename: 'pizza.de/[name]/main.[contenthash].css'
     }),
     new CompressionPlugin({

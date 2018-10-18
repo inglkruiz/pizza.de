@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { inject, observer } from 'mobx-react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { restaurants } from '..'
-import { RestaurantAsBlock } from '../../components/Restaurant'
+import Restaurant from '../../components/Restaurant/Block'
 import Menu from './components/Menu'
 
 import './style'
@@ -28,10 +29,9 @@ class RestaurantDetails extends Component {
           className='btn btn-lg btn-light restaurant-details__back-btn'
           to={restaurants}
         >
-          <i className='icon-angle-left' />
-          Back to Results
+          <FontAwesomeIcon icon='angle-left' /> Back to Results
         </Link>
-        <RestaurantAsBlock {...this.props.restaurantSelected.base} />
+        <Restaurant {...this.props.restaurantSelected.base} />
         <Menu menu={this.props.restaurantSelected.menu} />
       </div>
     )

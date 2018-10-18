@@ -5,6 +5,8 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom'
+import './lib/fontawesomeLibrary'
+
 import { hot } from 'react-hot-loader'
 
 import Restaurants from './routes/restaurants'

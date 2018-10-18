@@ -1,7 +1,7 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
 
-import { RestaurantAsLink as Restaurant } from '../../../../components/Restaurant'
+import Restaurant from '../../../../components/Restaurant/Link'
 
 function List () {
   const { restaurants } = this.props

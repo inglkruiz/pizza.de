@@ -1,5 +1,6 @@
 import React, { Fragment, PureComponent } from 'react'
 import { toJS } from 'mobx'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Item extends PureComponent {
   handleAdd = () => {
@@ -12,7 +13,7 @@ class Item extends PureComponent {
       <li className='section-item'>
         <span className='section-item__name'>{name}</span>
         <span className='section-item__price'>
-          <i className='icon-euro' />
+          <FontAwesomeIcon icon='euro-sign' />
           {price}
         </span>
         <button className='btn btn-primary btn-lg' onClick={this.handleAdd}>

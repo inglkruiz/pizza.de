@@ -48,9 +48,11 @@
           margin-right: 0.5rem;
           position: relative;
 
-          .icon-euro {
+          .fa-euro-sign {
             position: absolute;
-            left: 0.25rem;
+            left: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
           }
         }
       }
