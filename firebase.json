@@ -8,8 +8,12 @@
     ],
     "rewrites": [
       {
-        "source": "**",
+        "source": "/pizza.de/**",
         "destination": "/pizza.de/index.html"
+      },
+      {
+        "source": "/subsidy-checker/**",
+        "destination": "/subsidy-checker/index.html"
       }
     ]
   }
