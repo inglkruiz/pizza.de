@@ -5,7 +5,7 @@ let promise
 /**
  * Executes call to service and saves it in a promise.
  */
-function executeCall () {
+function executeCall() {
   promise = fetch('restaurants')
     .then(response => {
       if (response instanceof Promise) {
@@ -25,7 +25,7 @@ function executeCall () {
  * @param {Object} data Mapped data
  * @returns {Array}
  */
-function getRestaurantsData (data = {}) {
+function getRestaurantsData(data = {}) {
   return data.restaurants
 }
 
@@ -34,7 +34,7 @@ function getRestaurantsData (data = {}) {
  * @param {Object} data Mapped data
  * @returns {Array}
  */
-function getFiltersData (data = {}) {
+function getFiltersData(data = {}) {
   return data.filters
 }
 
@@ -43,7 +43,7 @@ function getFiltersData (data = {}) {
  * @param {Array} data
  * @returns {Object}
  */
-function mapData (data = []) {
+function mapData(data = []) {
   const dataMap = new Map()
   const categories = new Set()
   data.forEach((r, i) => {
@@ -89,7 +89,7 @@ function mapData (data = []) {
  * Returns service promise if already exists. If promise is `undefined` executeCall to save promise and returns it.
  * @returns {Promise}
  */
-function fetchRestaurants () {
+function fetchRestaurants() {
   if (promise) {
     return promise
   }
@@ -103,7 +103,7 @@ function fetchRestaurants () {
  * Returns mapped data attribute from promise response
  * @returns {Promise}
  */
-export function getRestaurants () {
+export function getRestaurants() {
   return fetchRestaurants()
     .then(getRestaurantsData)
     .catch(error => {
@@ -115,7 +115,7 @@ export function getRestaurants () {
  * Returns mapped data attribute from promise response
  * @returns {Promise}
  */
-export function getFilters () {
+export function getFilters() {
   return fetchRestaurants()
     .then(getFiltersData)
     .catch(error => {

@@ -2,7 +2,7 @@ import { fetch } from 'whatwg-fetch'
 import URLs from './URLs'
 import getAuthTokenPromise, { resetToken } from './services/getAuthToken'
 
-export default function fetchWithToken (endpoint, config = {}) {
+export default function fetchWithToken(endpoint, config = {}) {
   return getAuthTokenPromise
     .then(token =>
       fetch(

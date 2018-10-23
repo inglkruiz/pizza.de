@@ -26,7 +26,7 @@ if (token) {
 /**
  *
  */
-function getToken () {
+function getToken() {
   return fetchToken().then(setToken)
 }
 
@@ -34,7 +34,7 @@ function getToken () {
  *
  * @param {Object} { token }
  */
-function setToken ({ token }) {
+function setToken({ token }) {
   if (window.sessionStorage) {
     sessionStorage.setItem(SESSION_STORAGE_TOKEN_KEY, token)
   }
@@ -45,7 +45,7 @@ function setToken ({ token }) {
 /**
  *
  */
-function fetchToken () {
+function fetchToken() {
   const authorizationError = sessionStorage.getItem(
     SESSION_STORAGE_AUTHORIZATION_ERROR_KEY
   )
@@ -64,7 +64,7 @@ function fetchToken () {
   )
 }
 
-export function resetToken (params) {
+export function resetToken(params) {
   sessionStorage.removeItem(SESSION_STORAGE_TOKEN_KEY)
   promise = getToken()
 

@@ -5,5 +5,7 @@ import Loading from '../../../../../components/Loading'
 
 export default Loadable({
   loader: () => import('./Component'),
-  loading: () => <Loading />
+  loading: function SectionLoading() {
+    return <Loading />
+  }
 })

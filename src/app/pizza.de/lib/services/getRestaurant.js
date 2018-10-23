@@ -5,7 +5,7 @@ let promises = []
 /**
  * Executes call to service.
  */
-function executeCall (id) {
+function executeCall(id) {
   promises[id] = fetch(`restaurants/${id}`)
     .then(response => {
       if (response instanceof Promise) {
@@ -24,7 +24,7 @@ function executeCall (id) {
  * @param {Array} data
  * @returns {Object}
  */
-function mapData (data) {
+function mapData(data) {
   return {
     base: {
       index: 0,
@@ -48,7 +48,7 @@ function mapData (data) {
  *
  * @returns {Promise}
  */
-function fetchRestaurant (id) {
+function fetchRestaurant(id) {
   if (promises[id]) {
     return promises[id]
   }
@@ -60,7 +60,7 @@ function fetchRestaurant (id) {
  *
  * @returns {Promise}
  */
-export function getRestaurant (id) {
+export function getRestaurant(id) {
   return fetchRestaurant(id).catch(error => {
     console.log('request failed', error)
   })

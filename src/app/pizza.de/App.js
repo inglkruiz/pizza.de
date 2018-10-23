@@ -24,9 +24,9 @@ if (BUNDLING_PRODUCTION && window.innerWidth >= 768) {
   import('./style-tablet')
 }
 
-export default hot(module)(function App () {
+export default hot(module)(function App() {
   return (
-    <div className='container'>
+    <div className="container">
       <Router basename={routes.basename}>
         <Switch>
           <Route path={routes.restaurants} component={Restaurants} />

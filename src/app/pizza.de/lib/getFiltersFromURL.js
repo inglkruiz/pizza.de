@@ -1,3 +1,4 @@
+// @flow
 import getURLParameters from '../../../utils/getURLParameters'
 
 const CATEGORY_KEY = 'category'
@@ -5,7 +6,7 @@ const SORT_KEY = 'sort'
 const filters = [CATEGORY_KEY, SORT_KEY]
 let previousQuery
 
-function setFilterParameter (filteringBy, key) {
+function setFilterParameter(filteringBy: Object, key) {
   const value = filteringBy[key]
   if (value) {
     previousQuery[key] = value
@@ -14,7 +15,7 @@ function setFilterParameter (filteringBy, key) {
   }
 }
 
-export function asString (filteringBy) {
+export function asString(filteringBy: Object) {
   previousQuery = getURLParameters()
 
   setFilterParameter(filteringBy, CATEGORY_KEY)
@@ -25,7 +26,7 @@ export function asString (filteringBy) {
     .join('&')
 }
 
-export function asObject () {
+export function asObject() {
   const queryParameters = getURLParameters()
   const filteringBy = {}
 

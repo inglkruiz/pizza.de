@@ -1,9 +1,12 @@
+// @flow
 /**
  * Transforms a URL query string to an object
  * @param {String} queryString URL query parameters
  * @returns {Object}
  */
-export default function getURLParameters (queryString = window.location.search) {
+export default function getURLParameters(
+  queryString: string = window.location.search
+): { [string]: string } {
   const paramsObject = {}
   queryString = queryString.replace(/^\?/, '')
 

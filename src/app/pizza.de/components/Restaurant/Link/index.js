@@ -6,15 +6,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Restaurant = Loadable({
   loader: () => import('../Component'),
-  loading: () => <Loading />
+  loading: function RestaurantLoading() {
+    return <Loading />
+  }
 })
 
-export default function RestaurantAsLink (props) {
+export default function RestaurantAsLink(props) {
   return (
-    <Link className='restaurant' to={`/restaurant/${props.id}`}>
+    <Link className="restaurant" to={`/restaurant/${props.id}`}>
       <Restaurant {...props}>
-        <button className='btn btn-primary btn-lg restaurant__cta'>
-          Order Now <FontAwesomeIcon icon='angle-right' />
+        <button className="btn btn-primary btn-lg restaurant__cta">
+          Order Now <FontAwesomeIcon icon="angle-right" />
         </button>
       </Restaurant>
     </Link>

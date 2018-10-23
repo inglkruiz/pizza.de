@@ -6,7 +6,8 @@ module.exports = {
     }],
     ['@babel/preset-react', {
       development: process.env.NODE_ENV === 'development'
-    }]
+    }],
+    '@babel/preset-flow'
   ],
   'plugins': [
     '@babel/plugin-transform-react-constant-elements',

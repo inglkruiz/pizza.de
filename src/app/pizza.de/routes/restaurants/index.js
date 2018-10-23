@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
 
 import List from './components/List'
@@ -17,7 +18,12 @@ if (BUNDLING_PRODUCTION && window.innerWidth >= 768) {
 }
 
 class Restaurants extends Component {
-  constructor (props) {
+  static propTypes = {
+    loadRestaurants: PropTypes.func,
+    getFilters: PropTypes.func
+  }
+
+  constructor(props) {
     super(props)
 
     this.state = {
@@ -32,14 +38,14 @@ class Restaurants extends Component {
     this.setState({ mobileSideMenuIsOpen: !this.state.mobileSideMenuIsOpen })
   }
 
-  render () {
+  render() {
     return (
-      <div className='restaurants'>
-        <img src='https://via.placeholder.com/200x200' className='logo-brand' />
-        <div className='heading-bar'>
+      <div className="restaurants">
+        <img src="https://via.placeholder.com/200x200" className="logo-brand" />
+        <div className="heading-bar">
           <button
-            type='button'
-            className='btn btn-primary btn-lg mobile-filter-button'
+            type="button"
+            className="btn btn-primary btn-lg mobile-filter-button"
             onClick={this.handleMobileFiltersSort}
           >
             {this.state.mobileSideMenuIsOpen ? 'Done' : 'Filter & Sort'}

@@ -10,23 +10,23 @@ class AuthorizationError extends Component {
     )
   }
 
-  render () {
+  render() {
     return (
-      <div className='authorization-error'>
+      <div className="authorization-error">
         <h1>Network request failed</h1>
         <h2>
           Maybe because SSL certification has expired. Navigate to{' '}
           <a
-            href='https://mockapi.pizza.de/v1/auth'
-            target='_blank'
-            rel='noopener noreferrel'
+            href="https://mockapi.pizza.de/v1/auth"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             https://mockapi.pizza.de/v1/auth
           </a>{' '}
           and allow access to this URL then click{' '}
           <button
-            className='btn btn-primary btn-lg'
-            type='button'
+            className="btn btn-primary btn-lg"
+            type="button"
             onClick={this.handleReload}
           >
             Reload

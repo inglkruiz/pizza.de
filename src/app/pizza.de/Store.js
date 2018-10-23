@@ -11,7 +11,7 @@ configure({
 })
 
 class Store {
-  constructor () {
+  constructor() {
     extendObservable(this, {
       loadedRestaurants: [],
       restaurantSelected: null,
@@ -73,7 +73,7 @@ class Store {
     }
   }
 
-  get restaurants () {
+  get restaurants() {
     const { filteringBy, loadedRestaurants, filters } = this
     let list
     if (

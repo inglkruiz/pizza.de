@@ -10,26 +10,26 @@ import Menu from './components/Menu'
 import './style'
 
 class RestaurantDetails extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.props.getRestaurantSelected(this.props.match.params.id)
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.props.setRestaurantSelected(null)
   }
 
-  render () {
+  render() {
     if (!this.props.restaurantSelected) return null
 
     return (
-      <div className='restaurant-details'>
+      <div className="restaurant-details">
         <Link
-          className='btn btn-lg btn-light restaurant-details__back-btn'
+          className="btn btn-lg btn-light restaurant-details__back-btn"
           to={restaurants}
         >
-          <FontAwesomeIcon icon='angle-left' /> Back to Results
+          <FontAwesomeIcon icon="angle-left" /> Back to Results
         </Link>
         <Restaurant {...this.props.restaurantSelected.base} />
         <Menu menu={this.props.restaurantSelected.menu} />

@@ -1,6 +1,7 @@
+const path = require('path')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-// const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 const paths = require('./utils/paths')
 
@@ -16,10 +17,10 @@ const config = {
   module: {
     rules: [
       {
-        // set up standard-loader as a preloader
+        // set up eslint-loader as a preloader
         enforce: 'pre',
         test: /\.jsx?$/,
-        loader: 'standard-loader',
+        loader: 'eslint-loader',
         include: [paths.src]
       },
       {
@@ -35,9 +36,7 @@ const config = {
       {
         test: /\.scss$/,
         use: [
-          isProd
-            ? MiniCssExtractPlugin.loader
-            : { loader: 'style-loader' },
+          isProd ? MiniCssExtractPlugin.loader : { loader: 'style-loader' },
           { loader: 'css-loader' },
           { loader: 'postcss-loader' },
           { loader: 'sass-loader' }
@@ -64,15 +63,15 @@ const config = {
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(true),
     new webpack.optimize.ModuleConcatenationPlugin(),
-    /* new CopyWebpackPlugin([
+    new CopyWebpackPlugin([
       { from: path.join(paths.src, 'static'), to: paths.dist }
-    ]), */
+    ]),
     new StyleLintPlugin({
       syntax: 'scss'
     }),
     new webpack.DefinePlugin({
       BUNDLING_PRODUCTION: JSON.stringify(isProd)
-    })/* ,
+    }) /* ,
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery'
