@@ -7,7 +7,6 @@
     "analyze": "cross-env NODE_ENV=production webpack -p --config webpack/analyze.config.js",
     "build:prod": "cross-env NODE_ENV=production webpack -p --config webpack/prod.config.js",
     "start": "npm run dll && cross-env NODE_ENV=development webpack-dev-server --config webpack/dev.config.js",
-    "build": "cross-env NODE_ENV=development webpack",
     "deploy": "npm run build:prod && firebase deploy",
     "test:prod": "npm run build:prod && firebase serve",
     "flow": "flow"
@@ -44,6 +43,7 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
     "autoprefixer": "^9.2.1",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.2",

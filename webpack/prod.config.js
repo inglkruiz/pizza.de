@@ -12,7 +12,7 @@ const paths = require('./utils/paths')
 const htmlPlugin = require('./helpers/htmlPlugin')
 const apps = require('./apps')
 
-function getConfig (app) {
+function getConfig(app) {
   return webpackMerge(commonConfig, {
     entry: {
       [app]: path.join(paths.app, `${app}/index.js`)

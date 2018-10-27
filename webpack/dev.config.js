@@ -22,7 +22,10 @@ const config = {
     chunkFilename: '[name]/main.js'
   },
   plugins: [
-    new CleanWebpackPlugin([paths.dist], { root: paths.context, exclude: ['dll'] }),
+    new CleanWebpackPlugin([paths.dist], {
+      root: paths.context,
+      exclude: ['dll']
+    }),
     ...apps.map(app => htmlPlugin(app)),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
@@ -58,7 +61,10 @@ const config = {
       rewrites: [
         // { from: /.*\/?/i, to: 'index.html' }
         { from: /^\/pizza.de\/.*\/?/i, to: '/pizza.de/index.html' },
-        { from: /^\/subsidy-checker\/.*\/?/i, to: '/subsidy-checker/index.html' }
+        {
+          from: /^\/subsidy-checker\/.*\/?/i,
+          to: '/subsidy-checker/index.html'
+        }
       ]
     }
   },

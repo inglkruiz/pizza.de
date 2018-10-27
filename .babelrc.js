@@ -26,5 +26,6 @@ module.exports = {
           'removeImport': true
         }]
     ]
-  )
+  ),
+  'retainLines': true
 }
