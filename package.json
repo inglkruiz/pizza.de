@@ -9,6 +9,8 @@
     "start": "npm run dll && cross-env NODE_ENV=development webpack-dev-server --config webpack/dev.config.js",
     "deploy": "npm run build:prod && firebase deploy",
     "test:prod": "npm run build:prod && firebase serve",
+    "lint": "eslint src",
+    "format": "prettier --write \"**/*.+(js|scss|json)\"",
     "flow": "flow"
   },
   "engines": {
@@ -94,17 +96,9 @@
     "webpack-dev-server": "^3.1.8",
     "webpack-merge": "^4.1.4"
   },
-  "lint-staged": {
-    "linters": {
-      "src/**/*.{js,scss}": [
-        "prettier --write",
-        "git add"
-      ]
-    }
-  },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged && npm run flow"
     }
   }
 }

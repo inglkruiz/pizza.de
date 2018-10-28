@@ -15,7 +15,7 @@ function setFilterParameter(filteringBy: Object, key) {
   }
 }
 
-export function asString(filteringBy: Object) {
+export function asString(filteringBy: Object): string {
   previousQuery = getURLParameters()
 
   setFilterParameter(filteringBy, CATEGORY_KEY)
@@ -26,7 +26,7 @@ export function asString(filteringBy: Object) {
     .join('&')
 }
 
-export function asObject() {
+export function asObject(): { [string]: string } {
   const queryParameters = getURLParameters()
   const filteringBy = {}
 

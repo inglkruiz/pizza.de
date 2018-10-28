@@ -1,6 +1,6 @@
-@import "../../../../sass/bootstrap-core";
+@import '../../../../sass/bootstrap-core';
 
-$restaurant: "restaurant";
+$restaurant: 'restaurant';
 
 @include media-breakpoint-up(lg) {
   .#{$restaurant} {

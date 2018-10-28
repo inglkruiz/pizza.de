@@ -1,5 +1,6 @@
 const webpackMerge = require('webpack-merge')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin
 const prodAppsConfig = require('./prod.config')
 
 let analyzerPort = 8887

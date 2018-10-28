@@ -9,17 +9,15 @@
       "request": "launch",
       "name": "Launch Webpack",
       "program": "${workspaceFolder}/node_modules/webpack/bin/webpack.js",
-      "args": [
-        "--config", "${workspaceFolder}/webpack/prod.config.js"
-      ],
-      "env" : { "NODE_ENV" : "production" }
+      "args": ["--config", "${workspaceFolder}/webpack/prod.config.js"],
+      "env": { "NODE_ENV": "production" }
     },
     {
-        "name": "Chrome",
-        "type": "chrome",
-        "request": "launch",
-        "url": "http://localhost:9000",
-        "webRoot": "${workspaceRoot}/src"
+      "name": "Chrome",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:9000",
+      "webRoot": "${workspaceRoot}/src"
     }
   ]
 }

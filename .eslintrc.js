@@ -25,14 +25,15 @@ module.exports = {
   globals: {
     BUNDLING_PRODUCTION: true
   },
-  plugins: [
-    'flowtype',
-    'react',
-    'prettier',
-    'standard'
-  ],
+  plugins: ['flowtype', 'react', 'prettier', 'standard'],
   rules: {
     'prettier/prettier': 'error',
     'space-before-function-paren': 0
+  },
+  settings: {
+    react: {
+      version: '16.5.0',
+      flow: '0.83'
+    }
   }
 }

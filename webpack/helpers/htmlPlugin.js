@@ -2,7 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const paths = require('../utils/paths')
 
-module.exports = function htmlPlugin (name) {
+module.exports = function htmlPlugin(name) {
   return new HtmlWebpackPlugin({
     filename: path.join(paths.dist, `${name}/index.html`),
     chunksSortMode: 'manual',
