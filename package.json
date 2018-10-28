@@ -10,8 +10,10 @@
     "deploy": "npm run build:prod && firebase deploy",
     "test:prod": "npm run build:prod && firebase serve",
     "lint": "eslint src",
-    "format": "prettier --write \"**/*.+(js|scss|json)\"",
-    "flow": "flow"
+    "prettier": "prettier \"**/*.+(js|scss|json)\"",
+    "format": "npm run prettier -- --write",
+    "flow": "flow",
+    "validate": "npm run lint && npm run prettier -- --list-different && npm run flow"
   },
   "engines": {
     "node": ">=8.11.4 <9"
