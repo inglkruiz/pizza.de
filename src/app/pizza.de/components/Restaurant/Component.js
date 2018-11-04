@@ -6,11 +6,11 @@ import style from './style.module.scss'
 
 class Restaurant extends PureComponent {
   static propTypes = {
-    id: PropTypes.string,
-    logo: PropTypes.string,
-    name: PropTypes.string,
-    averageRating: PropTypes.number,
-    location: PropTypes.string,
+    id: PropTypes.string.isRequired,
+    logo: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    averageRating: PropTypes.number.isRequired,
+    location: PropTypes.string.isRequired,
     categories: MobxPropTypes.arrayOrObservableArray,
     children: PropTypes.node
   }

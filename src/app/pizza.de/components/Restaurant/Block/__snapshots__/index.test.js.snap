@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<div
+  class="restaurant"
+>
+  <img
+    class="restaurant__logo"
+    src="https://static-files.pizza.de/media/restaurant_logos/8a9957c0206469375baad3a2a5d7d29562424d1c_200.png"
+  />
+  <div
+    class="restaurant__info"
+  >
+    <h4
+      class="restaurant__name"
+    >
+      Krishna
+    </h4>
+    <span
+      class="restaurant__average-rating"
+    >
+      Avg. Rating (
+      4.8
+      /5)
+    </span>
+    <address
+      class="restaurant__location"
+    >
+      Location: 
+      Dumy Address 14 - Berlin, DE
+    </address>
+    <div>
+      <span
+        class="restaurant__category"
+      >
+        burger
+      </span>
+      <span
+        class="restaurant__category"
+      >
+        vegetarisch
+      </span>
+    </div>
+  </div>
+  <button
+    class="restaurant__cta btn btn-primary btn-lg"
+  >
+    <i
+      class="fa"
+    />
+     Call Now
+  </button>
+</div>
+`;

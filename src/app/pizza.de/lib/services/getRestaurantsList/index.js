@@ -1,4 +1,4 @@
-import fetch from '../fetchWithToken'
+import fetch from '../../fetchWithToken'
 
 let promise
 

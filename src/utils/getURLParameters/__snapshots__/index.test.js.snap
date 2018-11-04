@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Returns an object with attributes as the query parameters passed 1`] = `
+Object {
+  "param1": "value1",
+  "param2": "value2",
+  "param3": "value3",
+}
+`;

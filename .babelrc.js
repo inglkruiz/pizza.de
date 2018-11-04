@@ -1,5 +1,6 @@
 const isTest = String(process.env.NODE_ENV) === 'test'
 const isDev = String(process.env.NODE_ENV) === 'development'
+const isProd = String(process.env.NODE_ENV) === 'production'
 
 module.exports = {
   presets: [
@@ -23,19 +24,18 @@ module.exports = {
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-transform-runtime',
-    'react-loadable/babel'
-  ].concat(
-    isDev
-      ? ['react-hot-loader/babel']
-      : [
-          [
-            'transform-react-remove-prop-types',
-            {
-              mode: 'remove',
-              removeImport: true
-            }
-          ]
+    'react-loadable/babel',
+    isDev ? 'react-hot-loader/babel' : null,
+    isProd
+      ? [
+          'transform-react-remove-prop-types',
+          {
+            mode: 'remove',
+            removeImport: true
+          }
         ]
-  ),
+      : null,
+    isTest ? 'babel-plugin-dynamic-import-node' : null
+  ].filter(Boolean),
   retainLines: true
 }

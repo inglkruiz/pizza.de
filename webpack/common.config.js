@@ -36,7 +36,7 @@ const config = {
       {
         test: /\.module\.scss$/,
         use: [
-          isProd ? MiniCssExtractPlugin.loader : { loader: 'style-loader' },
+          { loader: 'style-loader' },
           {
             loader: 'css-loader',
             options: { modules: true, camelCase: true }
@@ -94,7 +94,7 @@ const config = {
   ],
   resolve: {
     extensions: ['.js'],
-    modules: [paths.src, 'node_modules']
+    modules: ['node_modules', paths.src]
   }
 }
 
