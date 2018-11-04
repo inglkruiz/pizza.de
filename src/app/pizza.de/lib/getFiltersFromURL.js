@@ -16,7 +16,7 @@ function setFilterParameter(filteringBy: Object, key) {
 }
 
 export function asString(filteringBy: Object): string {
-  previousQuery = getURLParameters()
+  previousQuery = getURLParameters(window.location.search)
 
   setFilterParameter(filteringBy, CATEGORY_KEY)
   setFilterParameter(filteringBy, SORT_KEY)
@@ -27,7 +27,7 @@ export function asString(filteringBy: Object): string {
 }
 
 export function asObject(): { [string]: string } {
-  const queryParameters = getURLParameters()
+  const queryParameters = getURLParameters(window.location.search)
   const filteringBy = {}
 
   filters.forEach(key => {

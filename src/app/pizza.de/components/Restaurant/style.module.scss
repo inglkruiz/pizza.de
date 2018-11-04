@@ -1,22 +1,8 @@
-@import '../../../../sass/bootstrap-core';
+@import "../../../../sass/bootstrap-core";
 
-$restaurant: 'restaurant';
+$restaurant: "restaurant";
 
 .#{$restaurant} {
-  display: flex;
-  margin-bottom: 1rem;
-  border: {
-    width: 1px;
-    style: solid;
-    color: $gray-400;
-    radius: 0.25rem;
-  }
-  color: $body-color;
-  padding: 0.5rem;
-  flex-flow: column;
-
-  @include box-shadow(0px 2px 2px $gray-400);
-
   &__logo {
     align-self: center;
     height: 130px;
@@ -48,6 +34,40 @@ $restaurant: 'restaurant';
 
     &:not(:last-child) {
       margin-right: 0.5rem;
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .#{$restaurant} {
+    &__info {
+      padding: 0 0.5rem;
+      flex: 1 0;
+    }
+
+    &__category {
+      margin-bottom: 0.25rem;
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .#{$restaurant} {
+    &__info {
+      padding: 0.5rem 1rem 0 1rem;
+    }
+
+    &__name {
+      display: inline-block;
+      margin-right: 1rem;
+    }
+
+    &__location {
+      margin-bottom: 1rem;
+    }
+
+    &__category {
+      margin-bottom: 0;
     }
   }
 }

@@ -14,14 +14,14 @@ import Restaurant from './routes/restaurant'
 import AuthorizationError from './routes/authorization-error'
 import routes from './routes'
 
-import './style'
+import './style.scss'
 
 if (!BUNDLING_PRODUCTION) {
-  import('./style-tablet')
+  import('./style-tablet.scss')
 }
 
 if (BUNDLING_PRODUCTION && window.innerWidth >= 768) {
-  import('./style-tablet')
+  import('./style-tablet.scss')
 }
 
 export default hot(module)(function App() {

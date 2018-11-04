@@ -1,8 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Loadable from 'react-loadable'
-import Loading from '../../Loading'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Loading from '../../Loading'
+import style from '../style-base.module.scss'
 
 const Restaurant = Loadable({
   loader: () => import('../Component'),
@@ -13,9 +14,13 @@ const Restaurant = Loadable({
 
 export default function RestaurantAsLink(props) {
   return (
-    <Link className="restaurant" to={`/restaurant/${props.id}`}>
+    <Link className={style.restaurant} to={`/restaurant/${props.id}`}>
       <Restaurant {...props}>
-        <button className="btn btn-primary btn-lg restaurant__cta">
+        <button
+          className={[style.restaurant__cta, 'btn btn-primary btn-lg'].join(
+            ' '
+          )}
+        >
           Order Now <FontAwesomeIcon icon="angle-right" />
         </button>
       </Restaurant>

@@ -7,6 +7,12 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Jest Test",
+      "program": "${workspaceFolder}/node_modules/jest/bin/jest.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Launch Webpack",
       "program": "${workspaceFolder}/node_modules/webpack/bin/webpack.js",
       "args": ["--config", "${workspaceFolder}/webpack/prod.config.js"],

@@ -34,10 +34,25 @@ const config = {
         }
       },
       {
-        test: /\.scss$/,
+        test: /\.module\.scss$/,
         use: [
           isProd ? MiniCssExtractPlugin.loader : { loader: 'style-loader' },
-          { loader: 'css-loader' },
+          {
+            loader: 'css-loader',
+            options: { modules: true, camelCase: true }
+          },
+          { loader: 'postcss-loader' },
+          { loader: 'sass-loader' }
+        ]
+      },
+      {
+        test: /\.scss$/,
+        exclude: /\.module\.scss$/,
+        use: [
+          isProd ? MiniCssExtractPlugin.loader : { loader: 'style-loader' },
+          {
+            loader: 'css-loader'
+          },
           { loader: 'postcss-loader' },
           { loader: 'sass-loader' }
         ]
@@ -78,7 +93,7 @@ const config = {
     }) */
   ],
   resolve: {
-    extensions: ['.js', '.scss'],
+    extensions: ['.js'],
     modules: [paths.src, 'node_modules']
   }
 }

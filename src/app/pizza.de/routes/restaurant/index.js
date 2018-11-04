@@ -7,7 +7,7 @@ import { restaurants } from '..'
 import Restaurant from '../../components/Restaurant/Block'
 import Menu from './components/Menu'
 
-import './style'
+import './style.scss'
 
 class RestaurantDetails extends Component {
   constructor(props) {

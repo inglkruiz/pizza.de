@@ -5,7 +5,7 @@
  * @returns {Object}
  */
 export default function getURLParameters(
-  queryString: string = window.location.search
+  queryString: string = ''
 ): { [string]: string } {
   const paramsObject = {}
   queryString = queryString.replace(/^\?/, '')

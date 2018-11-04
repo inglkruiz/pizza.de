@@ -1,4 +1,12 @@
 module.exports = {
   singleQuote: true,
-  semi: false
+  semi: false,
+  overrides: [
+    {
+      files: '*.scss',
+      options: {
+        singleQuote: false
+      }
+    }
+  ]
 }

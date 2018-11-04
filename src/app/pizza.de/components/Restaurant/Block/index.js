@@ -1,7 +1,8 @@
 import React from 'react'
 import Loadable from 'react-loadable'
-import Loading from '../../Loading'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Loading from '../../Loading'
+import style from '../style-base.module.scss'
 
 const Restaurant = Loadable({
   loader: () => import('../Component'),
@@ -12,9 +13,13 @@ const Restaurant = Loadable({
 
 export default function RestaurantAsBlock(props) {
   return (
-    <div className="restaurant">
+    <div className={style.restaurant}>
       <Restaurant {...props}>
-        <button className="btn btn-primary btn-lg restaurant__cta">
+        <button
+          className={[style.restaurant__cta, 'btn btn-primary btn-lg'].join(
+            ' '
+          )}
+        >
           <FontAwesomeIcon icon="phone" /> Call Now
         </button>
       </Restaurant>

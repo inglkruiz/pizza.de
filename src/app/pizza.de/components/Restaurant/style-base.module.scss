@@ -1,0 +1,47 @@
+@import "../../../../sass/bootstrap-core";
+
+$restaurant: "restaurant";
+
+.#{$restaurant} {
+  display: flex;
+  margin-bottom: 1rem;
+  border: {
+    width: 1px;
+    style: solid;
+    color: $gray-400;
+    radius: 0.25rem;
+  }
+  color: $body-color;
+  padding: 0.5rem;
+  flex-flow: column;
+
+  @include box-shadow(0px 2px 2px $gray-400);
+}
+
+@include media-breakpoint-up(md) {
+  .#{$restaurant} {
+    flex-flow: row;
+
+    &__cta {
+      margin-left: auto;
+      align-self: center;
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .#{$restaurant} {
+    @include hover-focus {
+      text-decoration: none;
+      color: $body-color;
+      border-color: $primary;
+      @include box-shadow(0px 4px 10px 4px $gray-400);
+
+      .#{$restaurant}__cta {
+        color: color-yiq(darken($primary, 7.5%));
+        @include gradient-bg(darken($primary, 7.5%));
+        border-color: darken($primary, 10%);
+      }
+    }
+  }
+}

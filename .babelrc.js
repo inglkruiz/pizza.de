@@ -1,16 +1,19 @@
+const isTest = String(process.env.NODE_ENV) === 'test'
+const isDev = String(process.env.NODE_ENV) === 'development'
+
 module.exports = {
   presets: [
     [
       '@babel/preset-env',
       {
-        modules: false,
+        modules: isTest ? 'commonjs' : false,
         useBuiltIns: 'entry' // 'usage|entry'
       }
     ],
     [
       '@babel/preset-react',
       {
-        development: process.env.NODE_ENV === 'development'
+        development: isDev
       }
     ],
     '@babel/preset-flow'
@@ -22,7 +25,7 @@ module.exports = {
     '@babel/plugin-transform-runtime',
     'react-loadable/babel'
   ].concat(
-    process.env.NODE_ENV === 'development'
+    isDev
       ? ['react-hot-loader/babel']
       : [
           [

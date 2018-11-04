@@ -7,14 +7,14 @@ import CategoryFilter from './components/Filters/Category'
 import Sort from './components/Sort'
 import NumberOfResults from './components/NumberOfResults'
 
-import './style'
+import './style.scss'
 
 if (!BUNDLING_PRODUCTION) {
-  import('./style-tablet')
+  import('./style-tablet.scss')
 }
 
 if (BUNDLING_PRODUCTION && window.innerWidth >= 768) {
-  import('./style-tablet')
+  import('./style-tablet.scss')
 }
 
 class Restaurants extends Component {
