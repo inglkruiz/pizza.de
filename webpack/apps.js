@@ -1,1 +1,1 @@
-module.exports = ['pizza.de', 'subsidy-checker']
+module.exports = ['pizza.de', 'game-of-thrones']

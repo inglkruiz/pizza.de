@@ -8,8 +8,8 @@
         "destination": "/pizza.de/index.html"
       },
       {
-        "source": "/subsidy-checker/**",
-        "destination": "/subsidy-checker/index.html"
+        "source": "/game-of-thrones/**",
+        "destination": "/game-of-thrones/index.html"
       }
     ]
   }

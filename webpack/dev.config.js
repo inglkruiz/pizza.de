@@ -62,8 +62,8 @@ const config = {
         // { from: /.*\/?/i, to: 'index.html' }
         { from: /^\/pizza.de\/.*\/?/i, to: '/pizza.de/index.html' },
         {
-          from: /^\/subsidy-checker\/.*\/?/i,
-          to: '/subsidy-checker/index.html'
+          from: /^\/game-of-thrones\/.*\/?/i,
+          to: '/game-of-thrones/index.html'
         }
       ]
     }

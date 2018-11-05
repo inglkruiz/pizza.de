@@ -14,7 +14,9 @@
     "format": "npm run prettier -- --write",
     "flow": "flow",
     "validate": "npm run lint && npm run test && npm run prettier -- --list-different && npm run flow",
-    "test": "jest",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand --watch",
     "stylelint-check": "stylelint-config-prettier-check",
     "stylelint": "stylelint \"src/**/*.scss\""
   },

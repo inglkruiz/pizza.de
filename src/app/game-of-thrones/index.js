@@ -4,7 +4,7 @@ import { render } from 'react-dom'
 
 render(
   <div>
-    <h1>Subsidy checker</h1>
+    <h1>Game Of Thrones</h1>
   </div>,
   document.getElementById('root')
 )
