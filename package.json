@@ -5,20 +5,22 @@
   "scripts": {
     "dll": "cross-env NODE_ENV=development webpack --config webpack/dll.config.js",
     "analyze": "cross-env NODE_ENV=production webpack -p --config webpack/analyze.config.js",
-    "build:prod": "cross-env NODE_ENV=production webpack -p --config webpack/prod.config.js",
+    "build": "cross-env NODE_ENV=production webpack -p --config webpack/prod.config.js",
     "start": "npm run dll && cross-env NODE_ENV=development webpack-dev-server --config webpack/dev.config.js",
-    "deploy": "npm run build:prod && firebase deploy",
-    "test:prod": "npm run build:prod && firebase serve",
+    "deploy": "npm run build && firebase deploy",
+    "test:prod": "npm run build && firebase serve",
     "lint": "eslint src",
     "prettier": "prettier \"**/*.+(js|scss|json)\"",
     "format": "npm run prettier -- --write",
     "flow": "flow",
-    "validate": "npm run lint && npm run test && npm run prettier -- --list-different && npm run flow",
-    "test": "jest --coverage",
+    "validate": "npm run lint && npm run test && npm run prettier -- --list-different && npm run flow && npm run build",
+    "test": "is-ci \"test:coverage\" \"test:watch\"",
+    "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
     "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand --watch",
     "stylelint-check": "stylelint-config-prettier-check",
-    "stylelint": "stylelint \"src/**/*.scss\""
+    "stylelint": "stylelint \"src/**/*.scss\"",
+    "setup": "npm install && npm run validate"
   },
   "engines": {
     "node": ">=8.11.4 <9"
@@ -83,6 +85,7 @@
     "html-webpack-plugin": "^3.2.0",
     "husky": "^1.1.3",
     "identity-obj-proxy": "^3.0.0",
+    "is-ci-cli": "^1.1.1",
     "jest": "^23.6.0",
     "lint-staged": "^8.0.4",
     "mini-css-extract-plugin": "^0.4.4",
