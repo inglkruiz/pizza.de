@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   env: {
     browser: true,
@@ -33,8 +35,20 @@ module.exports = {
   },
   settings: {
     react: {
-      version: '16.5.0',
-      flow: '0.83'
+      version: '16.6.0',
+      flow: '0.84'
     }
-  }
+  },
+  overrides: [
+    {
+      files: ['**/__tests__/**'],
+      settings: {
+        'import/resolver': {
+          jest: {
+            jestConfigFile: path.join(__dirname, './jest.config.js')
+          }
+        }
+      }
+    }
+  ]
 }

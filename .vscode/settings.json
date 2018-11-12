@@ -12,5 +12,7 @@
     }
   },
   "jest.pathToConfig": "jest.config.js",
-  "jest.runAllTestsFirst": false
+  "jest.runAllTestsFirst": false,
+  "editor.formatOnSave": false,
+  "eslint.autoFixOnSave": true
 }

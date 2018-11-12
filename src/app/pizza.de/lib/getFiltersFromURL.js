@@ -1,5 +1,5 @@
 // @flow
-import getURLParameters from '../../../utils/getURLParameters'
+import getURLParameters from 'utils/getURLParameters'
 
 const CATEGORY_KEY = 'category'
 const SORT_KEY = 'sort'

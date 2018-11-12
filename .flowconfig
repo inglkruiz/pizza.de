@@ -1,6 +1,6 @@
 [ignore]
 ./node_modules/.*
-./public/.*
+./dist/.*
 [include]
 ./src/.*
 [libs]
@@ -8,5 +8,5 @@
 [lints]
 
 [options]
-
+module.name_mapper='^utils' -> '<PROJECT_ROOT>/src/utils'
 [strict]

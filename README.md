@@ -1,6 +1,4 @@
-# React Framework
-
-*It suggests a way to work with Lazy Loadable components splitting css style for each layout breakpoint.*
+# React Boilerplate
 
 ## Directory Structure
 
@@ -36,7 +34,7 @@ If you are building a MPA it also works if you think of every entry as an isolat
 ## Production output
 
 ```text
-|-/public
+|-/dist
   |-/app1
     |-/core-js (polyfills)
     |-/vendors (i.e. React, Redux, Mobx, etc..)
@@ -73,10 +71,10 @@ This configuration allows you to watch how are your app chunks, minimized and gz
 
 ## NPM scripts
 
-* `dll`: Builds DLL used in development mode.
-* `analyze`: Runs a server which will show you how are your app chunks.
-* `build:prod`: Builds production assets.
-* `start`: Builds your apps for development mode.
-* `deploy`: Deploys your app to Google Firebase.
-* `test:prod`: Deploys your app to a simulated Google Firebase environment. Just to test your production assets.
-* `flow`: Check your source code with flowtype.
+- `dll`: Builds DLL used in development mode.
+- `analyze`: Runs a server which will show you how are your app chunks.
+- `build:prod`: Builds production assets.
+- `start`: Builds your apps for development mode.
+- `deploy`: Deploys your app to Google Firebase.
+- `test:prod`: Deploys your app to a simulated Google Firebase environment. Just to test your production assets.
+- `flow`: Check your source code with flowtype.

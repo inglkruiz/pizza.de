@@ -94,7 +94,7 @@ const config = {
   ],
   resolve: {
     extensions: ['.js'],
-    modules: ['node_modules', paths.src]
+    modules: ['node_modules', paths.src, 'utils']
   }
 }
 

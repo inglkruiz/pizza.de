@@ -1,10 +1,8 @@
 import React from 'react'
 import { render } from 'react-testing-library'
-import Loadable from 'react-loadable'
-import Restaurant from './index'
+import Restaurant from '../Component'
 
-test('renders', async () => {
-  await Loadable.preloadAll()
+test('renders', () => {
   const { container } = render(
     <Restaurant
       id="10317"
@@ -15,5 +13,5 @@ test('renders', async () => {
       categories={['burger', 'vegetarisch']}
     />
   )
-  expect(container.firstChild).toMatchSnapshot()
+  expect(container).toMatchSnapshot()
 })

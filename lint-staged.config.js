@@ -1,6 +1,6 @@
 module.exports = {
   linters: {
-    'src/**/*.js': ['eslint'],
+    'src/**/*.js': ['jest --findRelatedTests'],
     '**/*.+(js|scss|json)': ['prettier --write', 'git add']
   }
 }

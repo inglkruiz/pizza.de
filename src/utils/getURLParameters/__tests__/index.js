@@ -1,4 +1,4 @@
-import getURLParameters from './index'
+import getURLParameters from '../index'
 
 test('Returns an empty object when there is not any query parameter', () => {
   expect(getURLParameters()).toEqual({})
