@@ -2,7 +2,7 @@ const path = require('path')
 const webpackMerge = require('webpack-merge')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const InlineSourcePlugin = require('html-webpack-inline-source-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
@@ -46,11 +46,10 @@ function getConfig(app) {
         }
       },
       minimizer: [
-        new UglifyJsPlugin({
-          sourceMap: false,
+        new TerserPlugin({
           cache: false,
           parallel: true,
-          uglifyOptions: {
+          terserOptions: {
             output: {
               comments: false
             }
