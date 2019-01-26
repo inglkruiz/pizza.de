@@ -36,7 +36,7 @@ module.exports = {
   settings: {
     react: {
       version: '16.6.3',
-      flow: '0.88'
+      flow: '0.91'
     }
   },
   overrides: [

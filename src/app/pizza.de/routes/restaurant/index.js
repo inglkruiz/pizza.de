@@ -1,15 +1,31 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { inject, observer } from 'mobx-react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { restaurants } from '..'
+import { RestaurantProps } from '../../components/Restaurant/Component.js'
 import Restaurant from '../../components/Restaurant/Block'
-import Menu from './components/Menu'
+import Menu, { MenuProps } from './components/Menu'
 
 import './style.scss'
 
 class RestaurantDetails extends Component {
+  static propTypes = {
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        id: PropTypes.string
+      })
+    }),
+    getRestaurantSelected: PropTypes.func.isRequired,
+    setRestaurantSelected: PropTypes.func.isRequired,
+    restaurantSelected: PropTypes.shape({
+      base: PropTypes.shape(RestaurantProps),
+      menu: MenuProps
+    })
+  }
+
   constructor(props) {
     super(props)
 

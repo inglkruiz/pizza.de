@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import Loadable from 'react-loadable'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -12,7 +13,7 @@ const Restaurant = Loadable({
   }
 })
 
-export default function RestaurantAsLink(props) {
+function RestaurantAsLink(props) {
   return (
     <Link className={style.restaurant} to={`/restaurant/${props.id}`}>
       <Restaurant {...props}>
@@ -27,3 +28,9 @@ export default function RestaurantAsLink(props) {
     </Link>
   )
 }
+
+RestaurantAsLink.propTypes = {
+  id: PropTypes.string.isRequired
+}
+
+export default RestaurantAsLink

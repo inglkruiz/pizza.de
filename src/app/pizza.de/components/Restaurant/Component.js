@@ -4,16 +4,18 @@ import PropTypes from 'prop-types'
 
 import style from './style.module.scss'
 
+export const RestaurantProps = {
+  id: PropTypes.string.isRequired,
+  logo: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  averageRating: PropTypes.number.isRequired,
+  location: PropTypes.string.isRequired,
+  categories: MobxPropTypes.arrayOrObservableArray,
+  children: PropTypes.node
+}
+
 class Restaurant extends PureComponent {
-  static propTypes = {
-    id: PropTypes.string.isRequired,
-    logo: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    averageRating: PropTypes.number.isRequired,
-    location: PropTypes.string.isRequired,
-    categories: MobxPropTypes.arrayOrObservableArray,
-    children: PropTypes.node
-  }
+  static propTypes = RestaurantProps
 
   static defaultProps = {
     categories: []
